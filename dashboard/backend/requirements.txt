@@ -1,0 +1,6 @@
+# RS backend — dependencias (todas con wheels precompilados, sin compilación nativa)
+Flask>=3.0
+bcrypt>=4.1
+cryptography>=41
+# Servidor WSGI para producción (opcional, solo si se despliega con HTTPS):
+# gunicorn>=21
