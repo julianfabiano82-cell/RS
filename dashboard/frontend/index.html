@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RS · Mis turnos — Panel personal de rideshare</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<!-- ============ LOGIN ============ -->
+<div id="login-wrap">
+  <div class="card" style="max-width:380px;margin:8vh auto;">
+    <h2>🚗 RS · Mis turnos</h2>
+    <p class="muted">Ingresá con tu usuario para ver tu panel.</p>
+    <div class="form-errors" id="login-errors"></div>
+    <form id="login-form">
+      <div class="form-grid" style="grid-template-columns:1fr;">
+        <div class="field"><label for="l-user">Usuario</label><input type="text" id="l-user" autocomplete="username" required></div>
+        <div class="field"><label for="l-pass">Contraseña</label><input type="password" id="l-pass" autocomplete="current-password" required></div>
+      </div>
+      <button type="submit" class="btn primary">Entrar</button>
+    </form>
+  </div>
+</div>
+<div id="app" style="display:none">
+<header class="top">
+  <h1>🚗 RS · Mis turnos</h1>
+  <p>Panel personal de rideshare — Salt Lake City · <span id="whoami"></span> <button class="btn ghost small" id="btn-logout" style="margin-left:8px">Salir</button></p>
+</header>
+<nav class="tabs" id="tabs">
+  <button data-view="resumen" class="active">📊 Resumen</button>
+  <button data-view="registrar">➕ Registrar</button>
+  <button data-view="historial">🗂 Historial</button>
+  <button data-view="graficos">📈 Gráficos</button>
+  <button data-view="datos">⚙️ Datos</button>
+</nav>
+<main>
+
+<!-- ============ RESUMEN ============ -->
+<section class="view active" id="view-resumen">
+  <div id="resumen-empty" class="card empty" style="display:none">
+    <div class="big">🚗</div>
+    <p><strong>Aún no hay turnos registrados.</strong></p>
+    <p class="muted">Registrá tu primer turno y acá vas a ver tus métricas: neto total, neto/hora, comparativa Uber vs Lyft y más.</p>
+    <button class="btn primary" data-goto="registrar">➕ Registrar mi primer turno</button>
+  </div>
+  <div id="resumen-content">
+    <div class="kpis">
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="Suma del bruto de todos los turnos, antes de comisiones y costos.">Total bruto ⓘ</span></div><div class="num" id="k-bruto">—</div></div>
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="Neto = (bruto × (1 − comisión)) − (millas pax + millas muertas) × costo total/milla + (bono ÷ horas). Sumado en todos los turnos.">Total neto ⓘ</span></div><div class="num good" id="k-neto">—</div></div>
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="Suma de las horas trabajadas (fin − inicio) de todos los turnos.">Horas totales ⓘ</span></div><div class="num" id="k-horas">—</div></div>
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="Total neto ÷ horas totales. Es tu ingreso real por hora después de comisión, combustible y mantenimiento.">Neto/hora prom. ⓘ</span></div><div class="num good" id="k-netoh">—</div></div>
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="El turno con mayor neto/hora de tu historial.">Mejor turno ⓘ</span></div><div class="num" id="k-mejor" style="font-size:1.15rem">—</div><div class="sub" id="k-mejor-sub"></div></div>
+      <div class="kpi"><div class="lbl"><span class="tip" data-tip="Turnos, horas y neto de los últimos 7 días calendario (incluye hoy).">Últimos 7 días ⓘ</span></div><div class="num" id="k-7d">—</div><div class="sub" id="k-7d-sub"></div></div>
+    </div>
+    <div class="card">
+      <h2>⚖️ Uber vs Lyft <span class="tip" data-tip="Neto/hora de cada plataforma = (suma de netos de esa plataforma) ÷ (suma de horas de esa plataforma). Solo turnos marcados con esa plataforma.">ⓘ</span></h2>
+      <div id="comparativa"></div>
+    </div>
+    <div class="card">
+      <h2>🧮 Fórmula del neto (modelo v2)</h2>
+      <div class="formula">neto = (bruto × (1 − comisión)) − ((millas pax + millas muertas) × costo_total/milla) + (bono ÷ horas)<br>costo_total/milla = (precio_gasolina ÷ mpg) + mantenimiento/milla</div>
+      <p class="muted" style="margin:8px 0 0">La deducción del IRS ($0.76/milla) se muestra como referencia aparte y <strong>no</strong> se resta del neto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTRAR ============ -->
+<section class="view" id="view-registrar">
+  <div class="card">
+    <h2 id="form-title">➕ Registrar turno</h2>
+    <div class="form-errors" id="form-errors"></div>
+    <form id="shift-form" novalidate>
+      <input type="hidden" id="f-id">
+      <div class="form-grid">
+        <div class="field"><label for="f-fecha">Fecha</label><input type="date" id="f-fecha" required></div>
+        <div class="field"><label for="f-plataforma">Plataforma</label>
+          <select id="f-plataforma"><option value="uber">Uber</option><option value="lyft">Lyft</option><option value="ambas">Ambas</option></select></div>
+        <div class="field"><label for="f-inicio">Hora inicio</label><input type="time" id="f-inicio" required></div>
+        <div class="field"><label for="f-fin">Hora fin</label><input type="time" id="f-fin" required></div>
+        <div class="field"><label for="f-bruto">Bruto (USD)</label><input type="number" id="f-bruto" min="0" step="0.01" inputmode="decimal" placeholder="0.00" required></div>
+        <div class="field"><label for="f-bono">Bono / quest (USD)</label><input type="number" id="f-bono" min="0" step="0.01" inputmode="decimal" placeholder="0.00" value="0"></div>
+        <div class="field"><label for="f-millasPax">Millas con pasajero</label><input type="number" id="f-millasPax" min="0" step="0.1" inputmode="decimal" placeholder="0" required></div>
+        <div class="field"><label for="f-millasMuertas">Millas muertas</label><input type="number" id="f-millasMuertas" min="0" step="0.1" inputmode="decimal" placeholder="0" required></div>
+        <div class="field"><label for="f-gas">Precio gasolina (USD/gal)</label><input type="number" id="f-gas" min="0" step="0.001" inputmode="decimal"></div>
+        <div class="field full"><label for="f-zona">Zona / notas</label><input type="text" id="f-zona" placeholder="Ej: downtown — Eccles Theater, ola de vuelos 21:45"></div>
+      </div>
+      <div class="card" style="margin:12px 0 0; background:var(--card2)">
+        <h3 style="margin-top:0">Vista previa del cálculo</h3>
+        <div class="kpis">
+          <div class="kpi"><div class="lbl"><span class="tip" data-tip="Neto = (bruto × (1 − comisión)) − (millas totales × costo total/milla) + (bono ÷ horas).">Neto ⓘ</span></div><div class="num good" id="pv-neto">—</div></div>
+          <div class="kpi"><div class="lbl"><span class="tip" data-tip="Neto ÷ horas del turno.">Neto/hora ⓘ</span></div><div class="num good" id="pv-netoh">—</div></div>
+          <div class="kpi"><div class="lbl"><span class="tip" data-tip="Costo total por milla = (precio gasolina ÷ mpg) + mantenimiento/milla.">Costo/milla ⓘ</span></div><div class="num" id="pv-costomi" style="font-size:1.2rem">—</div></div>
+        </div>
+        <p class="muted" id="pv-irs" style="margin:6px 0 0"></p>
+      </div>
+      <button type="submit" class="btn primary" id="form-submit">💾 Guardar turno</button>
+      <button type="button" class="btn ghost" id="form-cancel" style="display:none">Cancelar edición</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ HISTORIAL ============ -->
+<section class="view" id="view-historial">
+  <div class="card empty" id="historial-empty">
+    <div class="big">🗂</div>
+    <p><strong>Sin turnos todavía.</strong></p>
+    <p class="muted">Cuando registres turnos, van a aparecer acá ordenados por fecha.</p>
+    <button class="btn primary" data-goto="registrar">➕ Registrar turno</button>
+  </div>
+  <div id="historial-content" style="display:none">
+    <div class="sort-row">
+      <span class="muted" id="hist-count"></span><span class="spacer"></span>
+      <button class="btn ghost small" id="sort-toggle">Orden: más recientes ↓</button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th>Fecha</th><th>Plat.</th><th class="num">Horas</th><th class="num">Bruto</th>
+        <th class="num"><span class="tip" data-tip="Neto = (bruto × (1 − comisión)) − (millas totales × costo total/milla) + (bono ÷ horas).">Neto ⓘ</span></th>
+        <th class="num"><span class="tip" data-tip="Neto ÷ horas del turno.">Neto/h ⓘ</span></th>
+        <th class="num"><span class="tip" data-tip="Neto ÷ millas totales (pax + muertas).">$ / mi ⓘ</span></th>
+        <th>Zona / notas</th><th></th>
+      </tr></thead>
+      <tbody id="hist-body"></tbody>
+    </table></div>
+    <p class="muted">Tocá ✏️ para editar un turno o 🗑 para borrarlo. El IRS ($0.76/milla) se muestra en el detalle de cada turno al editarlo.</p>
+  </div>
+</section>
+
+<!-- ============ GRAFICOS ============ -->
+<section class="view" id="view-graficos">
+  <div class="card empty" id="graficos-empty">
+    <div class="big">📈</div>
+    <p><strong>Nada que graficar todavía.</strong></p>
+    <p class="muted">Registrá al menos un turno para ver tus gráficos.</p>
+    <button class="btn primary" data-goto="registrar">➕ Registrar turno</button>
+  </div>
+  <div id="graficos-content" style="display:none">
+    <div class="chart-box">
+      <h3>Neto/hora por día — últimos 30 días</h3>
+      <p class="hint">Neto/hora del día = (suma de netos del día) ÷ (suma de horas del día). Pasá el cursor o tocá cada barra para ver el detalle.</p>
+      <div id="chart-dia"></div>
+    </div>
+    <div class="chart-box">
+      <h3>Neto/hora por plataforma</h3>
+      <p class="hint">(Suma de netos de la plataforma) ÷ (suma de horas de la plataforma).</p>
+      <div id="chart-plat"></div>
+    </div>
+    <div class="chart-box">
+      <h3>Neto total por hora de inicio</h3>
+      <p class="hint">Suma del neto de todos los turnos agrupados por la hora en que empezaron.</p>
+      <div id="chart-hora"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATOS ============ -->
+<section class="view" id="view-datos">
+  <div class="card">
+    <h2>📤 Exportar / 📥 Importar</h2>
+    <div class="row2">
+      <button class="btn ghost" id="btn-export">📤 Exportar CSV</button>
+      <label class="btn ghost" style="text-align:center; cursor:pointer">📥 Importar CSV<input type="file" id="file-import" accept=".csv,text/csv" style="display:none"></label>
+    </div>
+    <p class="muted" id="import-msg"></p>
+    <p class="muted">El CSV incluye todos los campos del turno más los parámetros usados (mpg, mantenimiento, comisión), así los números históricos no cambian si después ajustás los valores por defecto.</p>
+  </div>
+  <div class="card">
+    <h2>⚙️ Ajustes por defecto</h2>
+    <div class="form-grid">
+      <div class="field"><label for="s-gas">Precio gasolina USD/gal</label><input type="number" id="s-gas" min="0" step="0.001" inputmode="decimal"></div>
+      <div class="field"><label for="s-maint">Mantenimiento USD/milla</label><input type="number" id="s-maint" min="0" step="0.01" inputmode="decimal"></div>
+    </div>
+    <button class="btn primary" id="btn-save-settings">💾 Guardar ajustes</button>
+    <p class="muted">mpg fijo en 22 y comisión fija en 25 % (los usa el servidor en la fórmula del neto).</p>
+    <p class="muted" id="settings-msg"></p>
+    <div class="irs-note" style="margin-top:10px">ⓘ Deducción IRS de referencia: <strong>$0.76/milla</strong>. Se muestra junto a cada cálculo como línea informativa y <strong>no</strong> se resta del neto.</div>
+  </div>
+  <div class="card">
+    <h2>🗑 Zona de peligro</h2>
+    <button class="btn danger" id="btn-wipe">Borrar TODOS los turnos</button>
+    <p class="muted">Esto vacía tu historial en este dispositivo. No se puede deshacer. (Tip: exportá el CSV primero.)</p>
+  </div>
+</section>
+</main>
+</div>
+<footer>
+  <p>RS · Panel personal — fórmula neto v2: neto = (bruto × (1 − comisión)) − ((millas pax + muertas) × costo_total/milla) + (bono ÷ horas), con costo_total/milla = (gasolina ÷ mpg) + mantenimiento. IRS $0.76/mi solo como referencia. Tus turnos se guardan en el servidor, asociados a tu usuario. Nada queda en este dispositivo salvo tus ajustes de precio de gasolina y mantenimiento.</p>
+</footer>
+
+
+<script src="app.js"></script>
+</body>
+</html>
