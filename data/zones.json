@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T17:46:00-06:00",
+ "generated_at": "2026-10-08T17:53:00-06:00",
  "timezone": "America/Denver",
  "sample": false,
  "loops": [
@@ -52,18 +52,18 @@
     15,
     15,
     15,
-    15,
-    16,
-    23,
+    19,
     36,
-    36,
+    50,
+    47,
+    37,
     24,
-    22,
-    31,
-    32,
-    25,
-    28,
-    36,
+    24,
+    38,
+    42,
+    37,
+    38,
+    39,
     41,
     36,
     27,
@@ -1298,8 +1298,8 @@
     15,
     15,
     16,
-    20,
-    31,
+    24,
+    34,
     44,
     50,
     48,
@@ -1357,18 +1357,18 @@
     15,
     15,
     15,
-    15,
-    16,
-    23,
+    19,
     36,
-    36,
+    50,
+    47,
+    37,
     24,
-    22,
-    31,
-    32,
-    25,
-    28,
-    36,
+    24,
+    38,
+    42,
+    37,
+    38,
+    39,
     41,
     36,
     27,
@@ -1912,7 +1912,7 @@
    "name": "Downtown",
    "short": "Downtown",
    "direction": "C",
-   "drive": "0–5 min",
+   "drive": "0\u20135 min",
    "hourly": [
     82,
     51,
@@ -1934,14 +1934,15 @@
     55,
     81,
     86,
-    70,
-    73,
+    74,
+    76,
     94,
     89
    ],
    "reasons": [
-    "Garth Brooks night 2 at Delta Center (7:30 PM, ~13-14K, near sellout): arrivals 6-7:30 PM, dispersal 10-11:30 PM = biggest pickup window",
-    "eXpcon final day at Salt Palace: departures 5-7 PM feed airport drop-offs",
+    "Garth Brooks night 2 of 4 at Delta Center (8:00 PM, sold out ~14K): arrivals 6:30-8 PM, dispersal 10:30-11:30 PM = biggest pickup window",
+    "eXpcon final day at Salt Palace (ends 7 PM): departures 5-7 PM feed airport drop-offs",
+    "Downtown mid-size stack: Juanes @ The Union 8 PM, Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM, Madeon @ Sky 9:15 PM, Twiztid @ Complex 10 PM \u2014 late-night bar flows",
     "Bar-close release 1 AM; post-concert bar flows 10:30 PM-12:30 AM"
    ],
    "sources": [
@@ -1956,7 +1957,7 @@
    "name": "Capitol Hill & North",
    "short": "Capitol Hill",
    "direction": "N",
-   "drive": "5–15 min",
+   "drive": "5\u201315 min",
    "hourly": [
     8,
     8,
@@ -1996,7 +1997,7 @@
    "name": "Avenues & Foothill",
    "short": "Avenues",
    "direction": "NE",
-   "drive": "5–12 min",
+   "drive": "5\u201312 min",
    "hourly": [
     8,
     8,
@@ -2036,7 +2037,7 @@
    "name": "University of Utah",
    "short": "U of U",
    "direction": "E",
-   "drive": "8–12 min",
+   "drive": "8\u201312 min",
    "hourly": [
     15,
     14,
@@ -2065,7 +2066,7 @@
    ],
    "reasons": [
     "Classes in session; hospital shift changes",
-    "Utes vs Kansas is SATURDAY 8:15 PM (booking pace) — no Friday game at Rice-Eccles"
+    "Utes vs Kansas is SATURDAY 8:15 PM (booking pace) \u2014 no Friday game at Rice-Eccles"
    ],
    "sources": [
     "School & University Calendars",
@@ -2078,7 +2079,7 @@
    "name": "Sugar House & Millcreek",
    "short": "Sugar House",
    "direction": "SE",
-   "drive": "10–15 min",
+   "drive": "10\u201315 min",
    "hourly": [
     11,
     10,
@@ -2119,7 +2120,7 @@
    "name": "Liberty Park & Murray",
    "short": "Murray",
    "direction": "S",
-   "drive": "7–15 min",
+   "drive": "7\u201315 min",
    "hourly": [
     11,
     10,
@@ -2160,7 +2161,7 @@
    "name": "Glendale & West Valley",
    "short": "West Valley",
    "direction": "SW",
-   "drive": "8–15 min",
+   "drive": "8\u201315 min",
    "hourly": [
     11,
     10,
@@ -2188,7 +2189,7 @@
     18
    ],
    "reasons": [
-    "Jon Pardi at Maverik Center 7 PM (weak sell signal: 1,886 tix avail) — modest dispersal ~9:30-10:30 PM",
+    "Jon Pardi at Maverik Center 7 PM (weak advance sales) \u2014 modest dispersal ~9:30-10:30 PM",
     "Commuters at Fairbourne Station"
    ],
    "sources": [
@@ -2202,7 +2203,7 @@
    "name": "Fairpark & Rose Park",
    "short": "Fairpark",
    "direction": "W",
-   "drive": "5–10 min",
+   "drive": "5\u201310 min",
    "hourly": [
     10,
     10,
@@ -2243,7 +2244,7 @@
    "name": "Airport",
    "short": "Airport",
    "direction": "NW",
-   "drive": "10–12 min",
+   "drive": "10\u201312 min",
    "hourly": [
     12,
     12,
@@ -2251,18 +2252,18 @@
     13,
     16,
     27,
-    44,
-    42,
-    43,
+    48,
+    56,
+    60,
+    66,
+    66,
+    56,
+    52,
+    57,
+    59,
+    59,
+    60,
     58,
-    65,
-    56,
-    52,
-    57,
-    57,
-    52,
-    53,
-    56,
     55,
     50,
     39,
@@ -2271,8 +2272,8 @@
     12
    ],
    "reasons": [
-    "Arrival banks (carried from Thu FlightAware pattern): 10 AM biggest, plus 12/2/4/7 PM",
-    "Departure banks 11 AM / 3 PM drive drop-offs 9-10 AM / 1-2 PM; eXpcon departure-day airport spike 5-7 PM",
+    "Arrival banks (verified Fri via slcairport.com): 10 AM biggest (40 arr), plus 8 AM (28), 12 PM (24), 2 PM (35), 4 PM (29)",
+    "Departure banks (verified Fri): 9 AM biggest (59 dep) -> drop-offs 7:30-8:30 AM; 11 AM (39); 3 PM (37); 5 PM (33); eXpcon departure-day airport spike 5-7 PM",
     "KSLC green, no delays; TSA normal (~14 min); rental cars normal supply"
    ],
    "sources": [
@@ -2315,8 +2316,8 @@
    ],
    "reasons": [
     "Morning checkouts feed airport runs 7-9 AM",
-    "eXpcon departure wave: hotel→airport 5–9 AM (biggest airport-money window of the week)",
-    "Hotel occupancy signal LOW (10.5% sold out) — no compression lift"
+    "eXpcon departure wave: hotel\u2192airport 5\u20139 AM (biggest airport-money window of the week)",
+    "Hotel occupancy signal LOW (10.5% sold out) \u2014 no compression lift"
    ],
    "sources": [
     "Hotel Occupancy",
@@ -2422,15 +2423,15 @@
     29,
     57,
     84,
-    72,
+    76,
     43,
     53,
     80,
     45
    ],
    "reasons": [
-    "Garth Brooks night 2 Delta Center 7:30 PM; Jon Pardi Maverik Center 7 PM",
-    "eXpcon final day + Blade Show West day 1, Salt Palace; Utes game is Saturday"
+    "Garth Brooks night 2 of 4 Delta Center 8 PM (sold out); Jon Pardi Maverik Center 7 PM; Juanes @ The Union 8 PM",
+    "eXpcon final day (ends 7 PM) + Blade Show West day 1, Salt Palace; Utes game is Saturday"
    ],
    "sources": [
     "Events",
@@ -2466,15 +2467,15 @@
     10,
     10,
     12,
-    24,
-    47,
-    48,
+    22,
+    50,
+    54,
     31,
-    52,
+    56,
     89,
-    37
+    40
    ],
-   "note": "Garth Brooks night 2, 7:30 PM, ~13-14K near sellout; dispersal 10-11:30 PM"
+   "note": "Garth Brooks night 2 of 4, 8:00 PM, sold out (~14K in-the-round); dispersal ~10:30-11:30 PM"
   },
   {
    "area": [
@@ -2544,7 +2545,7 @@
     28,
     18
    ],
-   "note": "Jon Pardi 7 PM; weak sell signal (1,886 tix avail) — modest dispersal"
+   "note": "Jon Pardi 7 PM; weak advance sales (ample resale availability) \u2014 modest dispersal"
   },
   {
    "area": [
@@ -2579,7 +2580,7 @@
     10,
     10
    ],
-   "note": "Utes vs Kansas is Sat 8:15 PM per booking pace — no Friday game; baseline only"
+   "note": "Utes vs Kansas is Sat 10/10 8:15 PM (verified via utahutes.com) \u2014 no Friday game; baseline only"
   },
   {
    "area": [
@@ -2998,7 +2999,7 @@
    "area": [
     "airport"
    ],
-   "name": "SLC Airport — Terminal",
+   "name": "SLC Airport \u2014 Terminal",
    "type": "Airport",
    "hourly": [
     22,
@@ -3471,7 +3472,7 @@
     8,
     8
    ],
-   "note": "Dark Friday (next event Oct 16-17) — baseline only"
+   "note": "Dark Friday (next event Oct 16-17) \u2014 baseline only"
   },
   {
    "area": [
@@ -3539,7 +3540,7 @@
     10,
     10
    ],
-   "note": "No Friday show verified — baseline only"
+   "note": "No Friday show verified \u2014 baseline only"
   },
   {
    "area": [
@@ -3573,7 +3574,7 @@
     10,
     10
    ],
-   "note": "No Friday show verified — baseline only"
+   "note": "No Friday show verified \u2014 baseline only"
   },
   {
    "area": [
@@ -3609,6 +3610,41 @@
     34
    ],
    "note": "Late-night spillover"
+  },
+  {
+   "area": [
+    "downtown",
+    "events"
+   ],
+   "name": "The Union",
+   "type": "Nightlife",
+   "hourly": [
+    29,
+    13,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    11,
+    20,
+    36,
+    36,
+    23,
+    30,
+    45
+   ],
+   "note": "Juanes 8 PM Fri (verified); Latin headliner \u2014 strong rideshare lift; + Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM nearby"
   }
  ],
  "routes": [
@@ -4216,17 +4252,17 @@
   {
    "type": "Road",
    "title": "I-215 W / Redwood / SR-201 ramp closures",
-   "detail": "EB I-80→Redwood, NB I-215→Redwood, WB SR-201→NB I-215, Redwood→NB I-215 closed thru ~Oct 26. California Ave→NB I-215 reopens Fri 4 AM."
+   "detail": "EB I-80\u2192Redwood, NB I-215\u2192Redwood, WB SR-201\u2192NB I-215, Redwood\u2192NB I-215 closed (20-day phase from Oct 6, active Fri). California Ave\u2192NB I-215 reopens Fri 4:00 AM; NB I-215\u2192California Ave reopened Oct 6. Airport/west-valley friction all day."
   },
   {
    "type": "Road",
-   "title": "State Street closed North Temple–300 N",
+   "title": "State Street closed North Temple\u2013300 N",
    "detail": "Around the clock thru November (Pioneer Trail). Use Main St for downtown north-south moves."
   },
   {
    "type": "Airport",
    "title": "KSLC green, no delays",
-   "detail": "TSA normal (~14 min); rental cars normal supply. TNC pickup curbside, B-Lane."
+   "detail": "KSLC green, no delays; TSA normal (~14 min). Fri verified: 59 departures at 9 AM (drop-offs 7:30-8:30 AM), 40 arrivals at 10 AM (pickups 10:30-11:30 AM). TNC pickup curbside, B-Lane."
   }
  ]
 }
