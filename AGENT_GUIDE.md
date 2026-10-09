@@ -74,3 +74,17 @@ Set `"sample": false` once the data is real. While it is `true`, the page shows 
 - Every `id` is unique within its list.
 - Venues are still open (closed ones are removed). Miles and minutes come from a routing service.
 - The file parses as JSON and is under 1 MB.
+
+## "Now" tab (added 2026-10-08)
+`index.html` has a 4th tab, **Now**, that shows what people are doing downtown right now. It is rendered
+client-side by grouping `venues[]` — no schema change needed:
+- Only venues whose `area` includes `"downtown"` appear.
+- Categories: Bars ← `Nightlife`, Cinemas ← `Cinema`, Theaters ← `Theater`,
+  Live events ← `Arena`/`Stadium`/`Venue`/`Convention`, Dining ← `Dining`.
+- Each venue is a dial ranked by the selected hour's score, greens first; tapping opens the venue detail.
+Rules for your daily run: always include the downtown cinemas (`type: "Cinema"`) with hourly curves
+built from that day's real showtimes (evening blocks 6:30–10:30pm are the peak); keep downtown
+`Nightlife`/`Theater`/`Dining`/`Arena` venues fresh from real events; bar demand with no live source is
+estimated from day-of-week pattern + nearby events and its `note` must say so.
+- `event` (optional string): tonight's/today's verified event at the venue (e.g. "Garth Brooks", "eXpcon").
+  The Now tab dial shows the event name + venue; empty when no verified event. Never invent one.
