@@ -369,6 +369,7 @@
   /* =========================================================
      READABILITY LAYER — phone first
      ========================================================= */
+  :root[data-text="small"] { --k: 0.85; }
   :root[data-text="large"] { --k: 1.15; }
   .status { font-size: calc(13px * var(--k)); }
   .pill { font-size: calc(14px * var(--k)); padding: 8px 14px; }
@@ -488,7 +489,7 @@
 <nav class="menu" id="menu" aria-label="Menu">
   <div class="who" id="whoami">Signed in</div>
   <button id="wakeBtn">Keep screen on <span class="toggle" id="wakeState">Off</span></button>
-  <button id="textBtn">Text size <span class="toggle" id="textState">Standard</span></button>
+  <button id="textBtn">Text size <span class="toggle" id="textState">Small</span></button>
   <button id="themeBtn">Theme <span class="toggle" id="themeState">Dark</span></button>
   <button id="refreshBtn">Refresh data <span class="toggle">↻</span></button>
   <a href="#" id="signoutLink">Sign out</a>
@@ -1029,10 +1030,10 @@ $("wakeBtn").addEventListener("click", async () => {
 if (store.get("wake") !== "off") requestWake();
 function applyText(t) {
   document.documentElement.dataset.text = t;
-  $("textState").textContent = t === "large" ? "Large" : "Standard";
+  $("textState").textContent = t === "large" ? "Large" : t === "small" ? "Small" : "Standard";
 }
-$("textBtn").addEventListener("click", () => { const t = document.documentElement.dataset.text === "large" ? "standard" : "large"; store.set("text", t); applyText(t); });
-applyText(store.get("text") || "standard");
+$("textBtn").addEventListener("click", () => { const cur = document.documentElement.dataset.text || "small"; const t = cur === "small" ? "standard" : cur === "standard" ? "large" : "small"; store.set("text", t); applyText(t); });
+applyText(store.get("text") || "small");
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
   $("themeState").textContent = t === "light" ? "Light" : "Dark";
