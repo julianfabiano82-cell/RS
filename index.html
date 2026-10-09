@@ -974,13 +974,15 @@ document.addEventListener("click", e => { if (!e.target.closest("#menu") && !e.t
 $("refreshBtn").addEventListener("click", () => { load(); $("menu").classList.remove("open"); });
 async function requestWake() {
   try { wakeLock = await navigator.wakeLock.request("screen"); $("wakeState").textContent = "On";
-        wakeLock.addEventListener("release", () => { if (!document.hidden) $("wakeState").textContent = "Off"; }); }
+        wakeLock.addEventListener("release", () => { if (!document.hidden) { wakeLock = null; $("wakeState").textContent = "Off"; } }); }
   catch { $("wakeState").textContent = "Not supported"; }
 }
 $("wakeBtn").addEventListener("click", async () => {
-  if (wakeLock && !wakeLock.released) { await wakeLock.release(); wakeLock = null; $("wakeState").textContent = "Off"; }
-  else requestWake();
+  if (wakeLock && !wakeLock.released) { store.set("wake", "off"); await wakeLock.release(); wakeLock = null; $("wakeState").textContent = "Off"; }
+  else { store.set("wake", "on"); requestWake(); }
 });
+/* Default ON: keep the screen awake while the board is open (phone or laptop) */
+if (store.get("wake") !== "off") requestWake();
 function applyText(t) {
   document.documentElement.dataset.text = t;
   $("textState").textContent = t === "large" ? "Large" : "Standard";
