@@ -92,7 +92,12 @@
   .tchip:active { transform: scale(.96); }
   .tchip svg { width: 100%; max-width: 72px; overflow: visible; }
   .tchip .n { font-size: 11px; font-weight: 700; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tchip .z { font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .tchip .s { font-size: 14px; font-weight: 800; }
+  .nowhead { display: flex; align-items: baseline; justify-content: space-between; padding: 2px 2px 4px; }
+  .nowhead b { font-size: 16px; }
+  .nowhead span { font-size: 12px; color: var(--muted); }
+  .nowgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(82px, 1fr)); gap: 8px; padding: 4px 2px 10px; }
   .tchip.high { border-color: color-mix(in srgb, var(--high) 60%, var(--line)); background: color-mix(in srgb, var(--high-bg) 50%, var(--panel)); }
   .tchip.med { border-color: color-mix(in srgb, var(--med) 55%, var(--line)); }
   .tchip.low { border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); }
@@ -314,7 +319,7 @@
 
   /* ---------- Tabs ---------- */
   .brk { flex-basis: 100%; height: 0; }
-  .tabs { flex-basis: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--panel);
+  .tabs { flex-basis: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--panel);
     border: 1px solid var(--line); border-radius: 12px; padding: 3px; margin-top: 8px; }
   .tab { height: 38px; border: 0; background: none; border-radius: 9px; font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; }
   .tab[aria-selected="true"] { background: var(--panel-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
@@ -479,6 +484,7 @@
     <button class="tab" role="tab" data-tab="loops">Loops</button>
     <button class="tab" role="tab" data-tab="areas">Areas</button>
     <button class="tab" role="tab" data-tab="routes">Routes</button>
+    <button class="tab" role="tab" data-tab="now">Now</button>
   </div>
 </header>
 <div class="status" id="status">Loading…</div>
@@ -502,6 +508,7 @@
   <div id="loops" role="tabpanel"></div>
   <div id="areas" role="tabpanel" hidden></div>
   <div id="routes" role="tabpanel" hidden></div>
+  <div id="now" role="tabpanel" hidden></div>
   
   <div class="alerts" id="alerts" aria-label="Alerts"></div>
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
@@ -628,7 +635,7 @@ function gcard(item, kind) {
 function setTab(t) {
   tab = t; store.set("tab2", t);
   document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  ["loops", "areas", "routes"].forEach(id => { $(id).hidden = id !== t; });
+  ["loops", "areas", "routes", "now"].forEach(id => { $(id).hidden = id !== t; });
   if (DATA) render();
   window.scrollTo({ top: 0 });
 }
@@ -658,7 +665,7 @@ function loopCard(l) {
 }
 
 /* ---------------- state ---------------- */
-let DATA = null, hour = 0, followNow = true, sheet = null, wakeLock = null, tab = ["loops", "areas", "routes"].includes(store.get("tab2")) ? store.get("tab2") : "loops";
+let DATA = null, hour = 0, followNow = true, sheet = null, wakeLock = null, tab = ["loops", "areas", "routes", "now"].includes(store.get("tab2")) ? store.get("tab2") : "loops";
 const expanded = new Set();
 
 async function fetchData() {
@@ -780,6 +787,22 @@ function renderLoopsTab() {
   $("loops").innerHTML = hero + avoidHTML + compass + `<div class="sect">All loops by zone</div>` + groups;
 }
 
+const NOW_CATS = [["Bars", ["Nightlife"]], ["Cinemas", ["Cinema"]], ["Theaters", ["Theater"]],
+  ["Live events", ["Arena", "Stadium", "Venue", "Convention"]], ["Dining", ["Dining"]]];
+function renderNow() {
+  const isNow = hour === currentHour();
+  const groups = NOW_CATS.map(([label, types]) => ({
+    label,
+    vs: (DATA.venues || []).map((v, i) => ({ v, i }))
+      .filter(({ v }) => types.includes(v.type) && (v.area || []).includes("downtown"))
+      .map(({ v, i }) => ({ v, i, s: v.hourly[hour] })).sort((a, b) => b.s - a.s)
+  })).filter(g => g.vs.length);
+  $("now").innerHTML = `<div class="nowhead"><b>Downtown now</b><span>${isNow ? "where people are" : "where they'll be \u00b7 " + fmtHour(hour)}</span></div>` +
+    groups.map(g => `<div class="sect">${esc(g.label)}</div><div class="nowgrid">${g.vs.map(({ v, i, s }) => {
+      const lv = level(s), title = v.event || v.name, zone = v.event ? v.name : "";
+      return `<button class="tchip ${lv}" data-v="${i}" aria-label="${esc(title)}${zone ? " at " + esc(zone) : ""}: ${s}, ${LEVEL_TEXT[lv]}">${gaugeSVG(s, "sm")}<div class="n">${esc(title)}</div>${zone ? `<div class="z">${esc(zone)}</div>` : ""}<div class="s" style="color:${color(lv)}">${s}</div></button>`;
+    }).join("")}</div>`).join("");
+}
 function render() {
   if (!DATA) return;
   const nowH = currentHour(), isNow = hour === nowH;
@@ -833,6 +856,7 @@ function render() {
 
   $("routes").innerHTML = (DATA.routes || []).length
     ? `<div class="sect">Estimated trip demand by direction</div><div class="ggrid">${byScore(DATA.routes).map(r => gcard(r, "route")).join("")}</div>` : "";
+  renderNow();
   if ((DATA.neighborhoods || []).length)
     $("areas").insertAdjacentHTML("beforeend", `<div class="sect">Neighborhoods</div><div class="ggrid">${byScore(DATA.neighborhoods).map(n => gcard(n, "hood")).join("")}</div>`);
 
