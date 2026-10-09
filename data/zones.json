@@ -1912,7 +1912,7 @@
    "name": "Downtown",
    "short": "Downtown",
    "direction": "C",
-   "drive": "0\u20135 min",
+   "drive": "0–5 min",
    "hourly": [
     82,
     51,
@@ -1942,7 +1942,7 @@
    "reasons": [
     "Garth Brooks night 2 of 4 at Delta Center (8:00 PM, sold out ~14K): arrivals 6:30-8 PM, dispersal 10:30-11:30 PM = biggest pickup window",
     "eXpcon final day at Salt Palace (ends 7 PM): departures 5-7 PM feed airport drop-offs",
-    "Downtown mid-size stack: Juanes @ The Union 8 PM, Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM, Madeon @ Sky 9:15 PM, Twiztid @ Complex 10 PM \u2014 late-night bar flows",
+    "Downtown mid-size stack: Juanes @ The Union 8 PM, Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM, Madeon @ Sky 9:15 PM, Twiztid @ Complex 10 PM — late-night bar flows",
     "Bar-close release 1 AM; post-concert bar flows 10:30 PM-12:30 AM"
    ],
    "sources": [
@@ -1957,7 +1957,7 @@
    "name": "Capitol Hill & North",
    "short": "Capitol Hill",
    "direction": "N",
-   "drive": "5\u201315 min",
+   "drive": "5–15 min",
    "hourly": [
     8,
     8,
@@ -1997,7 +1997,7 @@
    "name": "Avenues & Foothill",
    "short": "Avenues",
    "direction": "NE",
-   "drive": "5\u201312 min",
+   "drive": "5–12 min",
    "hourly": [
     8,
     8,
@@ -2037,7 +2037,7 @@
    "name": "University of Utah",
    "short": "U of U",
    "direction": "E",
-   "drive": "8\u201312 min",
+   "drive": "8–12 min",
    "hourly": [
     15,
     14,
@@ -2066,7 +2066,7 @@
    ],
    "reasons": [
     "Classes in session; hospital shift changes",
-    "Utes vs Kansas is SATURDAY 8:15 PM (booking pace) \u2014 no Friday game at Rice-Eccles"
+    "Utes vs Kansas is SATURDAY 8:15 PM (booking pace) — no Friday game at Rice-Eccles"
    ],
    "sources": [
     "School & University Calendars",
@@ -2079,7 +2079,7 @@
    "name": "Sugar House & Millcreek",
    "short": "Sugar House",
    "direction": "SE",
-   "drive": "10\u201315 min",
+   "drive": "10–15 min",
    "hourly": [
     11,
     10,
@@ -2120,7 +2120,7 @@
    "name": "Liberty Park & Murray",
    "short": "Murray",
    "direction": "S",
-   "drive": "7\u201315 min",
+   "drive": "7–15 min",
    "hourly": [
     11,
     10,
@@ -2161,7 +2161,7 @@
    "name": "Glendale & West Valley",
    "short": "West Valley",
    "direction": "SW",
-   "drive": "8\u201315 min",
+   "drive": "8–15 min",
    "hourly": [
     11,
     10,
@@ -2189,7 +2189,7 @@
     18
    ],
    "reasons": [
-    "Jon Pardi at Maverik Center 7 PM (weak advance sales) \u2014 modest dispersal ~9:30-10:30 PM",
+    "Jon Pardi at Maverik Center 7 PM (weak advance sales) — modest dispersal ~9:30-10:30 PM",
     "Commuters at Fairbourne Station"
    ],
    "sources": [
@@ -2203,7 +2203,7 @@
    "name": "Fairpark & Rose Park",
    "short": "Fairpark",
    "direction": "W",
-   "drive": "5\u201310 min",
+   "drive": "5–10 min",
    "hourly": [
     10,
     10,
@@ -2244,7 +2244,7 @@
    "name": "Airport",
    "short": "Airport",
    "direction": "NW",
-   "drive": "10\u201312 min",
+   "drive": "10–12 min",
    "hourly": [
     12,
     12,
@@ -2316,8 +2316,8 @@
    ],
    "reasons": [
     "Morning checkouts feed airport runs 7-9 AM",
-    "eXpcon departure wave: hotel\u2192airport 5\u20139 AM (biggest airport-money window of the week)",
-    "Hotel occupancy signal LOW (10.5% sold out) \u2014 no compression lift"
+    "eXpcon departure wave: hotel→airport 5–9 AM (biggest airport-money window of the week)",
+    "Hotel occupancy signal LOW (10.5% sold out) — no compression lift"
    ],
    "sources": [
     "Hotel Occupancy",
@@ -2475,7 +2475,8 @@
     89,
     40
    ],
-   "note": "Garth Brooks night 2 of 4, 8:00 PM, sold out (~14K in-the-round); dispersal ~10:30-11:30 PM"
+   "note": "Garth Brooks night 2 of 4, 8:00 PM, sold out (~14K in-the-round); dispersal ~10:30-11:30 PM",
+   "event": "Garth Brooks"
   },
   {
    "area": [
@@ -2510,7 +2511,8 @@
     16,
     15
    ],
-   "note": "eXpcon final day 8 AM-7 PM, ~6,000; Blade Show West day 1 Fri-Sat; departure-day airport flows 5-7 PM"
+   "note": "eXpcon final day 8 AM-7 PM, ~6,000; Blade Show West day 1 Fri-Sat; departure-day airport flows 5-7 PM",
+   "event": "eXpcon"
   },
   {
    "area": [
@@ -2545,7 +2547,8 @@
     28,
     18
    ],
-   "note": "Jon Pardi 7 PM; weak advance sales (ample resale availability) \u2014 modest dispersal"
+   "note": "Jon Pardi 7 PM; weak advance sales (ample resale availability) — modest dispersal",
+   "event": ""
   },
   {
    "area": [
@@ -2580,7 +2583,8 @@
     10,
     10
    ],
-   "note": "Utes vs Kansas is Sat 10/10 8:15 PM (verified via utahutes.com) \u2014 no Friday game; baseline only"
+   "note": "Utes vs Kansas is Sat 10/10 8:15 PM (verified via utahutes.com) — no Friday game; baseline only",
+   "event": ""
   },
   {
    "area": [
@@ -2614,7 +2618,8 @@
     20,
     20
    ],
-   "note": "Visitors daytime"
+   "note": "Visitors daytime",
+   "event": ""
   },
   {
    "area": [
@@ -2648,7 +2653,8 @@
     42,
     30
    ],
-   "note": "Delta Center parking overflow"
+   "note": "Delta Center parking overflow",
+   "event": ""
   },
   {
    "area": [
@@ -2682,7 +2688,8 @@
     92,
     71
    ],
-   "note": "Next to Delta Center"
+   "note": "Next to Delta Center",
+   "event": ""
   },
   {
    "area": [
@@ -2717,7 +2724,8 @@
     82,
     86
    ],
-   "note": "Post-concert bar corridor; close 1 AM"
+   "note": "Post-concert bar corridor; close 1 AM",
+   "event": ""
   },
   {
    "area": [
@@ -2752,7 +2760,8 @@
     79,
     64
    ],
-   "note": "Bars and late dinners"
+   "note": "Bars and late dinners",
+   "event": ""
   },
   {
    "area": [
@@ -2787,7 +2796,8 @@
     26,
     19
    ],
-   "note": "Dinner 7-9 PM"
+   "note": "Dinner 7-9 PM",
+   "event": ""
   },
   {
    "area": [
@@ -2822,7 +2832,8 @@
     21,
     20
    ],
-   "note": "eXpcon attendee base"
+   "note": "eXpcon attendee base",
+   "event": ""
   },
   {
    "area": [
@@ -2857,7 +2868,8 @@
     21,
     20
    ],
-   "note": "Convention traffic"
+   "note": "Convention traffic",
+   "event": ""
   },
   {
    "area": [
@@ -2891,7 +2903,8 @@
     22,
     19,
     18
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
@@ -2926,7 +2939,8 @@
     19,
     18
    ],
-   "note": "555 S Main cluster"
+   "note": "555 S Main cluster",
+   "event": ""
   },
   {
    "area": [
@@ -2960,7 +2974,8 @@
     16,
     16
    ],
-   "note": "FrontRunner/TRAX hub"
+   "note": "FrontRunner/TRAX hub",
+   "event": ""
   },
   {
    "area": [
@@ -2993,13 +3008,14 @@
     14,
     14,
     14
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
     "airport"
    ],
-   "name": "SLC Airport \u2014 Terminal",
+   "name": "SLC Airport — Terminal",
    "type": "Airport",
    "hourly": [
     22,
@@ -3027,7 +3043,8 @@
     24,
     22
    ],
-   "note": "Pickup banks +30-45 min after arrivals; drop-offs 60-90 min before departures; TNC curbside B-Lane"
+   "note": "Pickup banks +30-45 min after arrivals; drop-offs 60-90 min before departures; TNC curbside B-Lane",
+   "event": ""
   },
   {
    "area": [
@@ -3062,7 +3079,8 @@
     26,
     22
    ],
-   "note": "North Temple corridor"
+   "note": "North Temple corridor",
+   "event": ""
   },
   {
    "area": [
@@ -3097,7 +3115,8 @@
     18,
     18
    ],
-   "note": "Shift changes 7 AM/PM"
+   "note": "Shift changes 7 AM/PM",
+   "event": ""
   },
   {
    "area": [
@@ -3131,7 +3150,8 @@
     16,
     16,
     16
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
@@ -3165,7 +3185,8 @@
     22,
     22
    ],
-   "note": "Classes in session"
+   "note": "Classes in session",
+   "event": ""
   },
   {
    "area": [
@@ -3199,7 +3220,8 @@
     16,
     16,
     16
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
@@ -3234,7 +3256,8 @@
     18,
     18
    ],
-   "note": "Murray; shift changes"
+   "note": "Murray; shift changes",
+   "event": ""
   },
   {
    "area": [
@@ -3268,7 +3291,8 @@
     14,
     14
    ],
-   "note": "TRAX Blue/Red"
+   "note": "TRAX Blue/Red",
+   "event": ""
   },
   {
    "area": [
@@ -3302,7 +3326,8 @@
     26,
     19
    ],
-   "note": "Evening shoppers"
+   "note": "Evening shoppers",
+   "event": ""
   },
   {
    "area": [
@@ -3336,7 +3361,8 @@
     14,
     14,
     14
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
@@ -3371,7 +3397,8 @@
     24,
     17
    ],
-   "note": "Sugar House corridor"
+   "note": "Sugar House corridor",
+   "event": ""
   },
   {
    "area": [
@@ -3405,7 +3432,8 @@
     12,
     12
    ],
-   "note": "West Valley TRAX"
+   "note": "West Valley TRAX",
+   "event": ""
   },
   {
    "area": [
@@ -3438,7 +3466,8 @@
     13,
     12,
     12
-   ]
+   ],
+   "event": ""
   },
   {
    "area": [
@@ -3472,7 +3501,8 @@
     8,
     8
    ],
-   "note": "Dark Friday (next event Oct 16-17) \u2014 baseline only"
+   "note": "Dark Friday (next event Oct 16-17) — baseline only",
+   "event": ""
   },
   {
    "area": [
@@ -3506,7 +3536,8 @@
     10,
     10
    ],
-   "note": "Daytime visitors"
+   "note": "Daytime visitors",
+   "event": ""
   },
   {
    "area": [
@@ -3540,7 +3571,8 @@
     10,
     10
    ],
-   "note": "No Friday show verified \u2014 baseline only"
+   "note": "No Friday show verified — baseline only",
+   "event": ""
   },
   {
    "area": [
@@ -3574,7 +3606,8 @@
     10,
     10
    ],
-   "note": "No Friday show verified \u2014 baseline only"
+   "note": "No Friday show verified — baseline only",
+   "event": ""
   },
   {
    "area": [
@@ -3609,7 +3642,8 @@
     25,
     34
    ],
-   "note": "Late-night spillover"
+   "note": "Late-night spillover",
+   "event": ""
   },
   {
    "area": [
@@ -3644,7 +3678,78 @@
     30,
     45
    ],
-   "note": "Juanes 8 PM Fri (verified); Latin headliner \u2014 strong rideshare lift; + Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM nearby"
+   "note": "Juanes 8 PM Fri (verified); Latin headliner — strong rideshare lift; + Iron & Wine @ Depot 7 PM, Hey Nothing @ Soundwell 8 PM nearby",
+   "event": "Juanes"
+  },
+  {
+   "name": "Megaplex Theatres — The Gateway",
+   "area": [
+    "downtown"
+   ],
+   "type": "Cinema",
+   "hourly": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    42,
+    52,
+    55,
+    58,
+    60,
+    63,
+    66,
+    72,
+    78,
+    80,
+    76,
+    60,
+    32
+   ],
+   "note": "Fri: 12 screens, shows 10:30a–10:30p; evening block 6:30–10:30p densest (showtime pattern verified)",
+   "event": ""
+  },
+  {
+   "name": "Broadway Centre Cinemas",
+   "area": [
+    "downtown"
+   ],
+   "type": "Cinema",
+   "hourly": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    42,
+    52,
+    55,
+    58,
+    60,
+    63,
+    66,
+    72,
+    78,
+    74,
+    70,
+    60,
+    32
+   ],
+   "note": "Fri indie/arthouse: matinees 12–5p, evening shows 6:30–10p (typical Friday pattern)",
+   "event": ""
   }
  ],
  "routes": [
@@ -4252,11 +4357,11 @@
   {
    "type": "Road",
    "title": "I-215 W / Redwood / SR-201 ramp closures",
-   "detail": "EB I-80\u2192Redwood, NB I-215\u2192Redwood, WB SR-201\u2192NB I-215, Redwood\u2192NB I-215 closed (20-day phase from Oct 6, active Fri). California Ave\u2192NB I-215 reopens Fri 4:00 AM; NB I-215\u2192California Ave reopened Oct 6. Airport/west-valley friction all day."
+   "detail": "EB I-80→Redwood, NB I-215→Redwood, WB SR-201→NB I-215, Redwood→NB I-215 closed (20-day phase from Oct 6, active Fri). California Ave→NB I-215 reopens Fri 4:00 AM; NB I-215→California Ave reopened Oct 6. Airport/west-valley friction all day."
   },
   {
    "type": "Road",
-   "title": "State Street closed North Temple\u2013300 N",
+   "title": "State Street closed North Temple–300 N",
    "detail": "Around the clock thru November (Pioneer Trail). Use Main St for downtown north-south moves."
   },
   {
