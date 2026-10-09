@@ -88,3 +88,9 @@ built from that day's real showtimes (evening blocks 6:30–10:30pm are the peak
 estimated from day-of-week pattern + nearby events and its `note` must say so.
 - `event` (optional string): tonight's/today's verified event at the venue (e.g. "Garth Brooks", "eXpcon").
   The Now tab dial shows the event name + venue; empty when no verified event. Never invent one.
+
+## Valley city areas (added 2026-10-08)
+`areas[]` includes one entry per valley city (id slug, no `direction`, `short` = city name):
+park-city, west-valley-city, murray, sandy, draper, taylorsville, south-jordan, midvale,
+millcreek, holladay, cottonwood-heights, riverton, herriman, bluffdale, north-salt-lake, bountiful.
+Score each 0–100 hourly from real city signals. They appear in Green Now when ≥70.
