@@ -57,6 +57,27 @@
   .icon-btn:active { background: var(--panel-2); }
   .clock { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700;
     color: var(--muted); white-space: nowrap; letter-spacing: .02em; }
+  .login-wrap { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center;
+    background: var(--bg); padding: 20px; }
+  .login-wrap[hidden] { display: none; }
+  .login-card { width: min(360px, 100%); background: var(--panel); border: 1px solid var(--line);
+    border-radius: 20px; padding: 28px 24px; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+  .login-brand { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .login-sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+  .login-lbl { display: block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 12px; }
+  .login-lbl input { display: block; width: 100%; margin-top: 6px; height: 48px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--panel-2); color: var(--text);
+    font-size: 16px; padding: 0 14px; box-sizing: border-box; }
+  .login-lbl input:focus { outline: 2px solid var(--high); border-color: var(--high); }
+  .login-remember { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text);
+    margin: 4px 0 14px; cursor: pointer; }
+  .login-remember input { width: 18px; height: 18px; accent-color: var(--high); }
+  .login-err { color: var(--bad); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .login-err[hidden] { display: none; }
+  .login-btn { width: 100%; height: 52px; border: 0; border-radius: 14px; background: var(--high);
+    color: #06210f; font-weight: 800; font-size: 16px; cursor: pointer; }
+  .login-btn:active { transform: scale(.98); }
+  .login-btn:disabled { opacity: .6; }
   .status { font-size: 12px; color: var(--muted); padding: 6px calc(16px + var(--sar)) 0 calc(16px + var(--sal)); max-width: 1100px; margin: 0 auto; }
 
   main { padding: 8px calc(10px + var(--sar)) calc(110px + var(--sab)) calc(10px + var(--sal)); max-width: 1100px; margin: 0 auto; }
@@ -418,6 +439,21 @@
 </style>
 </head>
 <body>
+<div class="login-wrap" id="loginWrap" hidden>
+  <div class="login-card">
+    <div class="login-brand"><span class="dot"></span>SLC Demand</div>
+    <p class="login-sub">Ingres&aacute; para ver el tablero</p>
+    <label class="login-lbl">Usuario
+      <input id="loginUser" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" />
+    </label>
+    <label class="login-lbl">Contrase&ntilde;a
+      <input id="loginPass" type="password" autocomplete="current-password" />
+    </label>
+    <label class="login-remember"><input id="loginRemember" type="checkbox" checked /> Recordarme por 30 d&iacute;as</label>
+    <div class="login-err" id="loginErr" hidden>Usuario o contrase&ntilde;a incorrectos.</div>
+    <button class="login-btn" id="loginBtn">Entrar</button>
+  </div>
+</div>
 
 <header>
   <div class="brand"><span class="dot" id="dot"></span>SLC Demand</div>
@@ -442,7 +478,7 @@
   <button id="textBtn">Text size <span class="toggle" id="textState">Standard</span></button>
   <button id="themeBtn">Theme <span class="toggle" id="themeState">Dark</span></button>
   <button id="refreshBtn">Refresh data <span class="toggle">↻</span></button>
-  <a href="/cdn-cgi/access/logout">Sign out</a>
+  <a href="#" id="signoutLink">Sign out</a>
 </nav>
 
 <main>
@@ -951,9 +987,62 @@ setInterval(tickClock, 1000); tickClock(); syncQuickIcon();
 fetch("/cdn-cgi/access/get-identity").then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.email) $("whoami").textContent = j.email; }).catch(() => {});
 
+/* ---------- Login gate (hash con sal; la contrasena no esta en el codigo) ---------- */
+const AUTH_SALT = "2f224d12dee2189d8cbb30659abcfe4c";
+const AUTH_HASH = "b4f67ceb28ee3e124b941f3535438caf11b32af14dce484bb315222d12c33690";
+const AUTH_KEY = "rs-auth";
+function authValid() {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+    if (!raw) return false;
+    return JSON.parse(raw).exp > Date.now();
+  } catch { return false; }
+}
+async function sha256hex(str) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf), b => b.toString(16).padStart(2, "0")).join("");
+}
+function showLogin() {
+  $("loginWrap").hidden = false;
+  $("loginErr").hidden = true;
+  $("loginPass").value = "";
+  setTimeout(() => $("loginUser").focus(), 50);
+}
+async function doLogin() {
+  const u = $("loginUser").value.trim();
+  const p = $("loginPass").value;
+  if (!u || !p) { $("loginErr").hidden = false; return; }
+  $("loginBtn").disabled = true;
+  try {
+    const h = await sha256hex(AUTH_SALT + u + ":" + p);
+    if (h === AUTH_HASH) {
+      const remember = $("loginRemember").checked;
+      const payload = JSON.stringify({ u: "rs", exp: Date.now() + (remember ? 30 : 0.5) * 864e5 });
+      (remember ? localStorage : sessionStorage).setItem(AUTH_KEY, payload);
+      $("loginWrap").hidden = true;
+      $("whoami").textContent = "rs";
+      load();
+    } else {
+      $("loginErr").hidden = false;
+      $("loginPass").value = "";
+      $("loginPass").focus();
+    }
+  } finally { $("loginBtn").disabled = false; }
+}
+$("loginBtn").addEventListener("click", doLogin);
+$("loginPass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+$("loginUser").addEventListener("keydown", e => { if (e.key === "Enter") $("loginPass").focus(); });
+$("signoutLink").addEventListener("click", e => {
+  e.preventDefault();
+  localStorage.removeItem(AUTH_KEY); sessionStorage.removeItem(AUTH_KEY);
+  $("menu").classList.remove("open"); $("menuBtn").setAttribute("aria-expanded", false);
+  showLogin();
+});
+
 setTab(tab);
 applyTheme(store.get("theme") || "dark");
-load();
+if (authValid()) { $("loginWrap").hidden = true; $("whoami").textContent = "rs"; load(); }
+else { showLogin(); }
 </script>
 </body>
 </html>
