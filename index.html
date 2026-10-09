@@ -504,8 +504,8 @@ const $ = id => document.getElementById(id);
 const level = s => s >= HIGH ? "high" : s >= MED ? "med" : "low";
 const LEVEL_TEXT = { high: "High demand", med: "Moderate", low: "Low" };
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const color = lv => cssVar(lv === "high" ? "--high" : lv === "med" ? "--med" : "--low");
-const bgVar = lv => cssVar(lv === "high" ? "--high-bg" : lv === "med" ? "--med-bg" : "--low-bg");
+const color = lv => cssVar(lv === "high" ? "--high" : lv === "med" ? "--med" : "--bad");
+const bgVar = lv => cssVar(lv === "high" ? "--high-bg" : lv === "med" ? "--med-bg" : "--bad-bg");
 const fmtHour = h => `${h % 12 || 12} ${h < 12 ? "AM" : "PM"}`;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
