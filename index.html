@@ -503,6 +503,10 @@
     <div class="compass-head"><b id="topnowTitle">Top now</b><span>most profitable first &middot; tap for detail</span></div>
     <div class="topstrip" id="topstrip"></div>
   </section>
+  <section class="avoidsec" aria-label="Areas to avoid">
+    <div class="compass-head"><b id="avoidTitle">Avoid now</b><span>low trip chance &middot; skip the dead return</span></div>
+    <div class="nowgrid" id="avoidgrid"></div>
+  </section>
   <section id="loopsSec" aria-label="Loops"></section>
   <div class="hot" id="hot" aria-live="polite"></div>
   <div id="loops" role="tabpanel"></div>
@@ -816,13 +820,21 @@ function render() {
     ...(DATA.areas || []).map(a => ({ attr: `data-a="${esc(a.id)}"`, name: a.short || a.name, s: a.hourly[hour] })).sort((a, b) => b.s - a.s).slice(0, 5),
     ...(DATA.routes || []).map(r => ({ attr: `data-r="${esc(r.id)}"`, name: `${r.from} \u2192 ${r.to}`, s: r.hourly[hour] })).sort((a, b) => b.s - a.s).slice(0, 3),
     [...(DATA.venues || []).map((v, i) => ({ attr: `data-v="${i}"`, name: v.name, s: v.hourly[hour] })),
-     ...(DATA.neighborhoods || []).map(n => ({ attr: `data-n="${esc(n.id)}"`, name: n.name, s: n.hourly[hour] }))].sort((a, b) => b.s - a.s).slice(0, 3),
+     ...(DATA.neighborhoods || []).map(n => ({ attr: `data-n="${esc(n.id)}"`, name: n.name, s: n.hourly[hour] }))].sort((a, b) => b.s - a.s).slice(0, 6),
   ].sort((a, b) => b.s - a.s);
   $("topstrip").innerHTML = tops.map(t => {
     const lv = level(t.s);
     return `<button class="tchip ${lv}" ${t.attr} aria-label="${esc(t.name)}: ${t.s}, ${LEVEL_TEXT[lv]}">${gaugeSVG(t.s, "sm")}<div class="n">${esc(t.name)}</div><div class="s" style="color:${color(lv)}">${t.s}</div></button>`;
   }).join("");
   $("topnowTitle").textContent = isNow ? "Top now" : `Top at ${fmtHour(hour)}`;
+
+  // Avoid: low trip probability — don't burn miles on the return
+  const av = (DATA.avoid || []).map(a => ({ a, s: a.hourly[hour] })).sort((x, y) => x.s - y.s);
+  $("avoidgrid").innerHTML = av.map(({ a, s }) => {
+    const lv = level(s);
+    return `<div class="tchip ${lv}" title="${esc(a.note || "")}">${gaugeSVG(s, "sm")}<div class="n">${esc(a.name)}</div><div class="s" style="color:${color(lv)}">${s}</div>${a.note ? `<div class="z">${esc(a.note)}</div>` : ""}</div>`;
+  }).join("");
+  $("avoidTitle").textContent = isNow ? "Avoid now" : `Avoid at ${fmtHour(hour)}`;
 
   // Loops (top of every tab) — best loop first
   const lps = (DATA.loops || []).slice().sort((a, b) => loopAt(b, hour) - loopAt(a, hour));
