@@ -539,11 +539,12 @@ function gaugeSVG(score, size, mode) {
     <path d="${arc(MED, HIGH)}" stroke="${bgVar("med")}" stroke-width="${sw}" fill="none"/>
     <path d="${arc(HIGH, 100)}" stroke="${bgVar("high")}" stroke-width="${sw}" fill="none"/>`;
   const val = score > 0 ? `<path d="${arc(0, Math.min(score, 99.9))}" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" fill="none"/>` : "";
+  const glow = (score > 0 && c === cssVar("--high")) ? `<path d="${arc(0, Math.min(score, 99.9))}" stroke="${c}" stroke-width="${sw + 14}" fill="none" opacity="0.32" stroke-linecap="round"/>` : "";
   const center = lg
     ? `<line x1="${cx}" y1="${cy}" x2="${(cx + (nx - cx) * .76).toFixed(1)}" y2="${(cy + (ny - cy) * .76).toFixed(1)}" stroke="${cssVar("--text")}" stroke-width="4" stroke-linecap="round"/>
        <circle cx="${cx}" cy="${cy}" r="7" fill="${cssVar("--text")}"/>`
     : `<text x="${cx}" y="${cy - 2}" text-anchor="middle" font-size="46" font-weight="800" fill="${c}" font-family="system-ui,-apple-system,sans-serif">${score}</text>`;
-  return `<svg viewBox="0 6 200 ${lg ? 106 : 104}" role="img" aria-label="Demand ${score} of 100">${bands}${val}${center}</svg>`;
+  return `<svg viewBox="0 6 200 ${lg ? 106 : 104}" role="img" aria-label="Demand ${score} of 100">${bands}${glow}${val}${center}</svg>`;
 }
 function stripHTML(h, sel, tall) {
   const max = Math.max(...h, 1);
