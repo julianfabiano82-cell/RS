@@ -114,6 +114,8 @@
     color: var(--text); border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer; white-space: nowrap; }
   .hot .pill { display: flex; justify-content: space-between; align-items: center; width: 100%; white-space: normal; text-align: left; }
   .pill b { color: var(--high); margin-left: 4px; }
+  .hot .pill.med { border-color: color-mix(in srgb, var(--med) 50%, var(--line)); background: var(--med-bg); }
+  .hot .pill.med b { color: var(--med); }
   .ahead { flex: 0 0 auto; align-self: center; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
     color: var(--med); background: var(--med-bg); padding: 4px 10px; border-radius: 999px; }
 
@@ -517,7 +519,7 @@
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
     <b style="color:var(--med)">Yellow</b> = moderately profitable ·
     <b style="color:var(--bad)">Red</b> = not profitable — skip it, don't waste time and miles.<br>
-    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2133</span></p>
+    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2207</span></p>
 </main>
 
 <div class="hourbar">
@@ -846,16 +848,22 @@ function render() {
 
   renderLoopsTab();
 
-  // Hot now: top venues across all areas
+  // Hot now: top places across all areas (green + orange), city · place · event
+  const areaLbl = {};
+  (DATA.areas || []).forEach(a => { areaLbl[a.id] = a.short || a.name; });
+  const cityOf = v => [].concat(v.area || []).map(id => areaLbl[id]).filter(Boolean)[0] || "";
   const hot = [
     ...(DATA.routes || []).map(r => ({ label: `${r.from} → ${r.to}`, attr: `data-r="${esc(r.id)}"`, s: r.hourly[hour] })),
-    ...(DATA.venues || []).map((v, i) => ({ label: v.name, attr: `data-v="${i}"`, s: v.hourly[hour] })),
+    ...(DATA.venues || []).map((v, i) => {
+      const c = cityOf(v), base = c ? `${c} · ${v.name}` : v.name;
+      return { label: v.event ? `${base} · ${v.event}` : base, attr: `data-v="${i}"`, s: v.hourly[hour] };
+    }),
     ...(DATA.neighborhoods || []).map(n => ({ label: n.name, attr: `data-n="${esc(n.id)}"`, s: n.hourly[hour] })),
-  ].filter(x => x.s >= HIGH).sort((a, b) => b.s - a.s).slice(0, 8);
+  ].filter(x => x.s >= MED).sort((a, b) => b.s - a.s).slice(0, 20);
   $("hot").hidden = isNow;
   $("hot").innerHTML = `<span class="ahead">Planning ${fmtHour(hour)}</span>` +
-    (hot.length ? `<span class="lbl">Hot</span>` + hot.map(x => `<button class="pill" ${x.attr}>${esc(x.label)}<b>${x.s}</b></button>`).join("")
-                : `<span class="lbl">No high-demand spots at ${fmtHour(hour)}</span>`);
+    (hot.length ? `<span class="lbl">Hot spots</span>` + hot.map(x => `<button class="pill${x.s >= HIGH ? "" : " med"}" ${x.attr}>${esc(x.label)}<b>${x.s}</b></button>`).join("")
+                : `<span class="lbl">No demand spots at ${fmtHour(hour)}</span>`);
 
   // Compass around Temple Square + area rows
   const geo = DATA.areas.filter(a => a.direction), cats = DATA.areas.filter(a => !a.direction);
