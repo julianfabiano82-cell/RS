@@ -326,11 +326,6 @@
   .atile .tag { font-size: calc(10px * var(--k)); font-weight: 800; letter-spacing: .08em; color: var(--bad); }
 
   /* ---------- Tabs ---------- */
-  .brk { flex-basis: 100%; height: 0; }
-  .tabs { flex-basis: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--panel);
-    border: 1px solid var(--line); border-radius: 12px; padding: 3px; margin-top: 8px; }
-  .tab { height: 38px; border: 0; background: none; border-radius: 9px; font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; }
-  .tab[aria-selected="true"] { background: var(--panel-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
 
   /* ---------- Gauge cards (routes + neighborhoods) ---------- */
   .ggrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -443,7 +438,6 @@
 
   /* Tablet / desktop: big gauge left, tile grid right */
   @media (min-width: 640px) {
-    .tabs { max-width: 560px; margin-left: auto; margin-right: auto; }
     .area { grid-template-columns: 220px minmax(0, 1fr); }
     .big { position: sticky; top: calc(var(--head) + 8px); display: flex; flex-direction: column; text-align: center; }
     .bt { align-items: center; }
@@ -488,13 +482,6 @@
   <button class="icon-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
   </button>
-  <div class="brk"></div>
-  <div class="tabs" role="tablist" aria-label="View">
-    <button class="tab" role="tab" data-tab="loops">Loops</button>
-    <button class="tab" role="tab" data-tab="areas">Areas</button>
-    <button class="tab" role="tab" data-tab="routes">Routes</button>
-    <button class="tab" role="tab" data-tab="now">Now</button>
-  </div>
 </header>
 <div class="status" id="status">Loading…</div>
 
@@ -518,12 +505,11 @@
     <div class="compass-head"><b id="avoidTitle">Avoid now</b><span>low trip chance &middot; skip the dead return</span></div>
     <div class="nowgrid" id="avoidgrid"></div>
   </section>
-  <section id="loopsSec" aria-label="Loops"></section>
   <div class="hot" id="hot" aria-live="polite"></div>
-  <div id="loops" role="tabpanel"></div>
-  <div id="areas" role="tabpanel" hidden></div>
-  <div id="routes" role="tabpanel" hidden></div>
-  <div id="now" role="tabpanel" hidden></div>
+  <div id="loops"></div>
+  <div id="areas"></div>
+  <div id="routes"></div>
+  <div id="now"></div>
   
   <div class="alerts" id="alerts" aria-label="Alerts"></div>
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
@@ -647,14 +633,7 @@ function gcard(item, kind) {
     <div class="g-lvl" style="color:${color(lv)}">${LEVEL_TEXT[lv]}</div>
     ${meta}<div class="g-peak">${peakWindow(item.hourly)}</div><div class="g-trend">${trendTxt(item.hourly)}</div></button>`;
 }
-function setTab(t) {
-  tab = t; store.set("tab2", t);
-  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  ["loops", "areas", "routes", "now"].forEach(id => { $(id).hidden = id !== t; });
-  if (DATA) render();
-  window.scrollTo({ top: 0 });
-}
-document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) setTab(b.dataset.tab); });
+
 
 
 const LOOP_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4h-4"/></svg>`;
@@ -680,7 +659,7 @@ function loopCard(l) {
 }
 
 /* ---------------- state ---------------- */
-let DATA = null, hour = 0, followNow = true, sheet = null, wakeLock = null, tab = ["loops", "areas", "routes", "now"].includes(store.get("tab2")) ? store.get("tab2") : "loops";
+let DATA = null, hour = 0, followNow = true, sheet = null, wakeLock = null;
 const expanded = new Set();
 
 async function fetchData() {
@@ -863,10 +842,6 @@ function render() {
     : `<div class="nogreen">No green spots at ${fmtHour(hour)} — see the top list below.</div>`;
   $("greenTitle").textContent = isNow ? "Green now" : `Green at ${fmtHour(hour)}`;
 
-  // Loops (top of every tab) — best loop first
-  const lps = (DATA.loops || []).slice().sort((a, b) => loopAt(b, hour) - loopAt(a, hour));
-  $("loopsSec").innerHTML = lps.length && tab !== "loops" ? `<div class="loops-head"><b>Top loops</b><span>swipe ›</span></div>
-    <div class="strip-tiles">${lps.slice(0, 10).map(loopTile).join("")}</div>` : "";
   renderLoopsTab();
 
   // Hot now: top venues across all areas
@@ -875,9 +850,8 @@ function render() {
     ...(DATA.venues || []).map((v, i) => ({ label: v.name, attr: `data-v="${i}"`, s: v.hourly[hour] })),
     ...(DATA.neighborhoods || []).map(n => ({ label: n.name, attr: `data-n="${esc(n.id)}"`, s: n.hourly[hour] })),
   ].filter(x => x.s >= HIGH).sort((a, b) => b.s - a.s).slice(0, 8);
-  $("hot").hidden = tab === "loops" && isNow;
-  if (tab === "loops") $("hot").innerHTML = isNow ? "" : `<span class="ahead">Planning ${fmtHour(hour)}</span>`;
-  else $("hot").innerHTML = (isNow ? "" : `<span class="ahead">Planning</span>`) +
+  $("hot").hidden = isNow;
+  $("hot").innerHTML = `<span class="ahead">Planning ${fmtHour(hour)}</span>` +
     (hot.length ? `<span class="lbl">Hot</span>` + hot.map(x => `<button class="pill" ${x.attr}>${esc(x.label)}<b>${x.s}</b></button>`).join("")
                 : `<span class="lbl">No high-demand spots at ${fmtHour(hour)}</span>`);
 
@@ -1140,7 +1114,6 @@ $("signoutLink").addEventListener("click", e => {
   showLogin();
 });
 
-setTab(tab);
 applyTheme(store.get("theme") || "dark");
 if (authValid()) { $("loginWrap").hidden = true; $("whoami").textContent = "rs"; load(); }
 else { showLogin(); }
