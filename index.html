@@ -500,6 +500,7 @@
 
 <main>
   <div class="hot" id="hot" aria-live="polite"></div>
+  <div class="hot" id="hotloops" aria-live="polite"></div>
   <section class="topnow" aria-label="Top right now">
     <div class="sect" id="greenTitle">Green now</div>
     <div id="greenGrid"></div>
@@ -519,7 +520,7 @@
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
     <b style="color:var(--med)">Yellow</b> = moderately profitable ·
     <b style="color:var(--bad)">Red</b> = not profitable — skip it, don't waste time and miles.<br>
-    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2207</span></p>
+    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2235</span></p>
 </main>
 
 <div class="hourbar">
@@ -864,6 +865,15 @@ function render() {
   $("hot").innerHTML = `<span class="ahead">Planning ${fmtHour(hour)}</span>` +
     (hot.length ? `<span class="lbl">Hot spots</span>` + hot.map(x => `<button class="pill${x.s >= HIGH ? "" : " med"}" ${x.attr}>${esc(x.label)}<b>${x.s}</b></button>`).join("")
                 : `<span class="lbl">No demand spots at ${fmtHour(hour)}</span>`);
+
+  // Top loops (same pill design), right below Planning Hot
+  const hl = (DATA.loops || [])
+    .map(l => ({ label: l.from === l.to ? `${l.from} loop` : `${l.from} - ${l.to}`, attr: `data-l="${esc(l.id)}"`, s: l.hourly[hour] }))
+    .filter(x => x.s >= MED).sort((a, b) => b.s - a.s).slice(0, 10);
+  $("hotloops").hidden = isNow;
+  $("hotloops").innerHTML = `<span class="ahead">Top loops ${fmtHour(hour)}</span>` +
+    (hl.length ? `<span class="lbl">Best circuits</span>` + hl.map(x => `<button class="pill${x.s >= HIGH ? "" : " med"}" ${x.attr}>${esc(x.label)}<b>${x.s}</b></button>`).join("")
+               : `<span class="lbl">No strong loops at ${fmtHour(hour)}</span>`);
 
   // Compass around Temple Square + area rows
   const geo = DATA.areas.filter(a => a.direction), cats = DATA.areas.filter(a => !a.direction);
