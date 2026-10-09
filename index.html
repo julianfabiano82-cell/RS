@@ -56,6 +56,7 @@
     display: grid; place-items: center; border-radius: 12px; cursor: pointer; }
   .icon-btn:active { background: var(--panel-2); }
   .clock { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700;
+  .rtimer { font-variant-numeric: tabular-nums; font-size: 11px; color: var(--muted); }
     color: var(--muted); white-space: nowrap; letter-spacing: .02em; }
   .login-wrap { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center;
     background: var(--bg); padding: 20px; overflow-y: auto; }
@@ -475,6 +476,7 @@
   <div class="brand"><span class="dot" id="dot"></span>SLC Demand</div>
   <div class="spacer"></div>
   <div class="clock" id="slcClock" title="Current time in Salt Lake City">--:--</div>
+  <div class="rtimer" id="rtimer" title="Auto-refresh countdown">↻ 60s</div>
   <button class="icon-btn" id="themeQuickBtn" aria-label="Toggle light/dark theme"></button>
   <button class="icon-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -999,7 +1001,14 @@ $("nowBtn").addEventListener("click", () => { followNow = true; setHour(currentH
 setInterval(() => { if (followNow && inWindow() && hour !== currentHour()) { hour = currentHour(); render(); } }, 30 * 1000);
 
 /* ---------------- refresh ---------------- */
-setInterval(() => { if (inWindow()) load(); }, REFRESH_MS);
+let refreshIn = REFRESH_MS / 1000;
+function updateTimer() { const el = $("rtimer"); if (el) el.textContent = `\u21bb ${refreshIn}s`; }
+setInterval(() => {
+  if (!inWindow()) { if (refreshIn !== REFRESH_MS / 1000) { refreshIn = REFRESH_MS / 1000; updateTimer(); } return; }
+  if (--refreshIn <= 0) { refreshIn = REFRESH_MS / 1000; load(); }
+  updateTimer();
+}, 1000);
+updateTimer();
 document.addEventListener("visibilitychange", () => { if (!document.hidden) { load(); if ($("wakeState").textContent === "On") requestWake(); } });
 window.addEventListener("online", load);
 matchMedia("(min-width: 760px)").addEventListener("change", render);
