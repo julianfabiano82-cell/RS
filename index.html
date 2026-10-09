@@ -520,7 +520,7 @@
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
     <b style="color:var(--med)">Yellow</b> = moderately profitable ·
     <b style="color:var(--bad)">Red</b> = not profitable — skip it, don't waste time and miles.<br>
-    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2306</span></p>
+    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-08-2334</span></p>
 </main>
 
 <div class="hourbar">
@@ -855,7 +855,7 @@ function render() {
   const cityOf = v => [].concat(v.area || []).map(id => areaLbl[id]).filter(Boolean)[0] || "";
   const hot = [
     ...(DATA.areas || []).filter(a => a.hourly[hour] >= HIGH).map(a => ({ label: a.short || a.name, kind: "area", attr: `data-a="${esc(a.id)}"`, s: a.hourly[hour] })),
-    ...(DATA.loops || []).map(l => ({ label: l.from === l.to ? `${l.from} loop` : `${l.from} - ${l.to}`, kind: "loop", attr: `data-l="${esc(l.id)}"`, s: l.hourly[hour] })),
+    ...(DATA.loops || []).map(l => ({ label: l.from === l.to ? `${l.from} loop` : `${l.from} - ${l.to}`, kind: "loop", attr: `data-l="${esc(l.id)}"`, s: loopAt(l, hour) })),
     ...(DATA.routes || []).map(r => ({ label: `${r.from} → ${r.to}`, kind: "route", attr: `data-r="${esc(r.id)}"`, s: r.hourly[hour] })),
     ...(DATA.venues || []).map((v, i) => {
       const c = cityOf(v), base = c ? `${c} · ${v.name}` : v.name;
