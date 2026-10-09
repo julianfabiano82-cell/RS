@@ -453,8 +453,10 @@
   <div id="routes" role="tabpanel" hidden></div>
   
   <div class="alerts" id="alerts" aria-label="Alerts"></div>
-  <p class="foot">Forecast scores 0–100, updated daily. Not a guarantee of trips or earnings.
-    Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.</p>
+  <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
+    <b style="color:var(--med)">Yellow</b> = moderately profitable ·
+    <b style="color:var(--bad)">Red</b> = not profitable — skip it, don't waste time and miles.<br>
+    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.</p>
 </main>
 
 <div class="hourbar">
@@ -502,7 +504,7 @@ const HIGH = 70, MED = 45, REFRESH_MS = 15 * 60 * 1000, MINI_BASE = 6;
 const miniLimit = () => matchMedia("(min-width: 760px)").matches ? 12 : MINI_BASE;
 const $ = id => document.getElementById(id);
 const level = s => s >= HIGH ? "high" : s >= MED ? "med" : "low";
-const LEVEL_TEXT = { high: "High demand", med: "Moderate", low: "Low" };
+const LEVEL_TEXT = { high: "Profitable", med: "Moderately profitable", low: "Not profitable" };
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const color = lv => cssVar(lv === "high" ? "--high" : lv === "med" ? "--med" : "--bad");
 const bgVar = lv => cssVar(lv === "high" ? "--high-bg" : lv === "med" ? "--med-bg" : "--bad-bg");
