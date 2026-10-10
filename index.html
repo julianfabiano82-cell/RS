@@ -462,22 +462,6 @@
 </style>
 </head>
 <body>
-<div class="login-wrap" id="loginWrap" hidden>
-  <div class="login-card">
-    <div class="login-brand"><span class="dot"></span>SLC Demand</div>
-    <p class="login-sub">Sign in to view the board</p>
-    <label class="login-lbl">Username
-      <input id="loginUser" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" />
-    </label>
-    <label class="login-lbl">Password
-      <input id="loginPass" type="password" autocomplete="current-password" />
-    </label>
-    <label class="login-remember"><input id="loginRemember" type="checkbox" checked /> Remember me for 30 days</label>
-    <div class="login-err" id="loginErr" hidden>Incorrect username or password.</div>
-    <button class="login-btn" id="loginBtn">Sign in</button>
-  </div>
-</div>
-
 <header>
   <div class="brand"><span class="dot" id="dot"></span>SLC Demand</div>
   <div class="spacer"></div>
@@ -491,12 +475,10 @@
 <div class="status" id="status">Loading…</div>
 
 <nav class="menu" id="menu" aria-label="Menu">
-  <div class="who" id="whoami">Signed in</div>
   <button id="wakeBtn">Keep screen on <span class="toggle" id="wakeState">Off</span></button>
   <button id="textBtn">Text size <span class="toggle" id="textState">Small</span></button>
   <button id="themeBtn">Theme <span class="toggle" id="themeState">Dark</span></button>
   <button id="refreshBtn">Refresh data <span class="toggle">↻</span></button>
-  <a href="#" id="signoutLink">Sign out</a>
 </nav>
 
 <main>
@@ -796,7 +778,7 @@ function renderNow() {
       .filter(({ v }) => types.includes(v.type) && (v.area || []).includes("downtown"))
       .map(({ v, i }) => ({ v, i, s: v.hourly[hour] })).sort((a, b) => b.s - a.s)
   })).filter(g => g.vs.length);
-  $("now").innerHTML = `<div class="nowhead"><b>Downtown now</b><span>${isNow ? "where people are" : "where they'll be \u00b7 " + fmtHour(hour)}</span></div>` +
+  $("now").innerHTML = `<div class="nowhead"><b>Downtown now</b><span>${isNow ? "where people are" : "where they'll be \\u00b7 " + fmtHour(hour)}</span></div>` +
     groups.map(g => `<div class="sect">${esc(g.label)}</div><div class="nowgrid">${g.vs.map(({ v, i, s }) => {
       const lv = level(s), title = v.event || v.name, zone = v.event ? v.name : "";
       return `<button class="tchip ${lv}" data-v="${i}" aria-label="${esc(title)}${zone ? " at " + esc(zone) : ""}: ${s}, ${LEVEL_TEXT[lv]}">${gaugeSVG(s, "sm")}<div class="n">${esc(title)}</div>${zone ? `<div class="z">${esc(zone)}</div>` : ""}<div class="s" style="color:${color(lv)}">${s}</div></button>`;
@@ -813,7 +795,7 @@ function render() {
   const tops = [
     ...(DATA.loops || []).map(l => ({ attr: `data-l="${esc(l.id)}"`, name: loopName(l), s: loopAt(l, hour) })).sort((a, b) => b.s - a.s).slice(0, 5),
     ...(DATA.areas || []).map(a => ({ attr: `data-a="${esc(a.id)}"`, name: a.short || a.name, s: a.hourly[hour] })).sort((a, b) => b.s - a.s).slice(0, 5),
-    ...(DATA.routes || []).map(r => ({ attr: `data-r="${esc(r.id)}"`, name: `${r.from} \u2192 ${r.to}`, s: r.hourly[hour] })).sort((a, b) => b.s - a.s).slice(0, 3),
+    ...(DATA.routes || []).map(r => ({ attr: `data-r="${esc(r.id)}"`, name: `${r.from} \\u2192 ${r.to}`, s: r.hourly[hour] })).sort((a, b) => b.s - a.s).slice(0, 3),
     [...(DATA.venues || []).map((v, i) => ({ attr: `data-v="${i}"`, name: v.name, s: v.hourly[hour] })),
      ...(DATA.neighborhoods || []).map(n => ({ attr: `data-n="${esc(n.id)}"`, name: n.name, s: n.hourly[hour] }))].sort((a, b) => b.s - a.s).slice(0, 6),
   ].sort((a, b) => b.s - a.s);
@@ -1014,7 +996,7 @@ setInterval(() => { if (followNow && inWindow() && hour !== currentHour()) { hou
 
 /* ---------------- refresh ---------------- */
 let refreshIn = REFRESH_MS / 1000;
-function updateTimer() { const el = $("rtimer"); if (el) el.textContent = `\u21bb ${refreshIn}s`; }
+function updateTimer() { const el = $("rtimer"); if (el) el.textContent = `\\u21bb ${refreshIn}s`; }
 setInterval(() => {
   if (!inWindow()) { if (refreshIn !== REFRESH_MS / 1000) { refreshIn = REFRESH_MS / 1000; updateTimer(); } return; }
   if (--refreshIn <= 0) { refreshIn = REFRESH_MS / 1000; load(); }
@@ -1072,64 +1054,9 @@ $("themeQuickBtn").addEventListener("click", () => {
 });
 setInterval(tickClock, 1000); tickClock(); syncQuickIcon();
 
-fetch("/cdn-cgi/access/get-identity").then(r => r.ok ? r.json() : null)
-  .then(j => { if (j && j.email) $("whoami").textContent = j.email; }).catch(() => {});
-
-/* ---------- Login gate (hash con sal; la contrasena no esta en el codigo) ---------- */
-const AUTH_SALT = "2f224d12dee2189d8cbb30659abcfe4c";
-const AUTH_HASH = "b4f67ceb28ee3e124b941f3535438caf11b32af14dce484bb315222d12c33690";
-const AUTH_KEY = "rs-auth";
-function authValid() {
-  try {
-    const raw = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
-    if (!raw) return false;
-    return JSON.parse(raw).exp > Date.now();
-  } catch { return false; }
-}
-async function sha256hex(str) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf), b => b.toString(16).padStart(2, "0")).join("");
-}
-function showLogin() {
-  $("loginWrap").hidden = false;
-  $("loginErr").hidden = true;
-  $("loginPass").value = "";
-  setTimeout(() => $("loginUser").focus(), 50);
-}
-async function doLogin() {
-  const u = $("loginUser").value.trim();
-  const p = $("loginPass").value;
-  if (!u || !p) { $("loginErr").hidden = false; return; }
-  $("loginBtn").disabled = true;
-  try {
-    const h = await sha256hex(AUTH_SALT + u + ":" + p);
-    if (h === AUTH_HASH) {
-      const remember = $("loginRemember").checked;
-      const payload = JSON.stringify({ u: "rs", exp: Date.now() + (remember ? 30 : 0.5) * 864e5 });
-      (remember ? localStorage : sessionStorage).setItem(AUTH_KEY, payload);
-      $("loginWrap").hidden = true;
-      $("whoami").textContent = "rs";
-      load();
-    } else {
-      $("loginErr").hidden = false;
-      $("loginPass").value = "";
-      $("loginPass").focus();
-    }
-  } finally { $("loginBtn").disabled = false; }
-}
-$("loginBtn").addEventListener("click", doLogin);
-$("loginPass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
-$("loginUser").addEventListener("keydown", e => { if (e.key === "Enter") $("loginPass").focus(); });
-$("signoutLink").addEventListener("click", e => {
-  e.preventDefault();
-  localStorage.removeItem(AUTH_KEY); sessionStorage.removeItem(AUTH_KEY);
-  $("menu").classList.remove("open"); $("menuBtn").setAttribute("aria-expanded", false);
-  showLogin();
-});
-
+/* ---------- No login gate: board loads directly ---------- */
 applyTheme(store.get("theme") || "dark");
-if (authValid()) { $("loginWrap").hidden = true; $("whoami").textContent = "rs"; load(); }
-else { showLogin(); }
+load();
 </script>
 </body>
 </html>
