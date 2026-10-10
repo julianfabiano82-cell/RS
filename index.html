@@ -313,7 +313,7 @@
   .ltile .n .arr { color: var(--muted); font-weight: 600; }
   .ltile .s { font-size: calc(11.5px * var(--k)); color: var(--muted); margin-top: 2px; }
   .tiles-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; margin-bottom: 14px; }
-  /* Top 6 loops: pinned at the very top of the page, right under the sticky header */
+  /* Top 9 loops: pinned at the very top of the page, right under the sticky header */
   .toploops { border-color: color-mix(in srgb, var(--high) 45%, var(--line)); }
   .strip-tiles { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -10px 12px; padding: 2px 10px 6px; scrollbar-width: none; }
   .strip-tiles::-webkit-scrollbar { display: none; }
@@ -505,7 +505,7 @@
   <p class="foot">Forecast scores 0–100, updated daily. <b style="color:var(--high)">Green</b> = profitable ·
     <b style="color:var(--med)">Yellow</b> = moderately profitable ·
     <b style="color:var(--bad)">Red</b> = not profitable — skip it, don't waste time and miles.<br>
-    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-10-1740</span></p>
+    Not a guarantee of trips or earnings. Not affiliated with Uber, Lyft or any venue listed.<br>Don't use while driving — check when parked.<br><span style="opacity:.55">build 2026-10-10-1750</span></p>
 </main>
 
 <div class="hourbar">
@@ -771,14 +771,14 @@ function renderLoopsTab() {
   $("loops").innerHTML = hero + avoidHTML + compass + `<div class="sect">All loops by zone</div>` + groups;
 }
 
-/* Top 6 loops — pinned at the very top of the page (under the sticky header clock) */
+/* Top 9 loops — pinned at the very top of the page (under the sticky header clock) */
 function renderTopLoops() {
   const el = $("topLoops"); if (!el) return;
   const all = (DATA.loops || []);
   if (!all.length) { el.innerHTML = ""; return; }
-  const top6 = all.slice().sort((a, b) => loopAt(b, hour) - loopAt(a, hour)).slice(0, 6);
-  el.innerHTML = `<div class="tiles-wrap toploops"><div class="compass-head"><b>${hour === currentHour() ? "Top 6 loops now" : "Top 6 loops at " + fmtHour(hour)}</b><span>tap a loop for detail</span></div>
-    <div class="ltiles">${top6.map(loopTile).join("")}</div></div>`;
+  const top9 = all.slice().sort((a, b) => loopAt(b, hour) - loopAt(a, hour)).slice(0, 9);
+  el.innerHTML = `<div class="tiles-wrap toploops"><div class="compass-head"><b>${hour === currentHour() ? "Top 9 loops now" : "Top 9 loops at " + fmtHour(hour)}</b><span>tap a loop for detail</span></div>
+    <div class="ltiles">${top9.map(loopTile).join("")}</div></div>`;
 }
 
 const NOW_CATS = [["Bars", ["Nightlife"]], ["Cinemas", ["Cinema"]], ["Theaters", ["Theater"]],
