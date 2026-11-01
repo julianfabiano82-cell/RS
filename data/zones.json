@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T07:17:36-07:00",
+ "generated_at": "2026-11-01T10:54:01-07:00",
  "timezone": "America/Denver",
  "sample": false,
  "loops": [
@@ -28,15 +28,15 @@
     56,
     60,
     68,
+    70,
+    66,
     72,
-    84,
-    90,
-    88,
-    72,
-    88,
-    92
+    68,
+    62,
+    70,
+    72
    ],
-   "note": "Downtown in-zone Sunday: thin morning (Tabernacle Choir dispersal est. 10:00-10:30), a west-downtown afternoon field (Dia de los Muertos 13:00-18:00 staggered + Picklr finals dispersal est. late afternoon + Michelada arrivals from 16:00), then the evening stack - Kilby 18:00, Rose Wagner 19:30, Don Omar arrivals 18:30-20:00 - and the out ladder est.: Kilby/Rose Wagner 21:30-22:15, Fear Factory close 22:00-23:00, Don Omar 22:30-23:30, Michelada 22:00-24:00. Rain all day favors short chained trips. No Saturday-scale bar-close wave is modelled; payday INACTIVE"
+   "note": "Downtown in-zone Sunday: thin morning (Tabernacle Choir dispersal est. 10:00-10:30), a west-downtown afternoon field (Dia de los Muertos 13:00-18:00 staggered + Picklr finals dispersal est. late afternoon + Michelada arrivals from 16:00), then a MODEST evening (Don Omar POSTPONED - no arena stack): Kilby 18:00, Rose Wagner 19:30, both cinemas' evening blocks, Fear Factory final night from 19:00 - outs est.: Kilby/Rose Wagner 21:30-22:15, cinema outs rolling 21:00-23:30, Fear Factory close 22:00-23:00, Michelada 22:00-24:00. Rain all day favors short chained trips. No Saturday-scale bar-close wave is modelled; payday INACTIVE"
   },
   {
    "id": "dt-air",
@@ -124,15 +124,15 @@
     38,
     40,
     42,
-    46,
-    50,
-    48,
-    50,
-    52,
     44,
-    34
+    46,
+    44,
+    44,
+    46,
+    40,
+    30
    ],
-   "note": "Sunday hotel flow: no convention - morning check-outs feed airport drop-offs, the Picklr finals add a daytime sports base at the Salt Palace, and Don Omar arrivals build in the evening; post-show flows est. ~22:30-23:30. Sun occupancy not measured (Sat measured panel: index 0.84, 0/19 sold out, median $129)"
+   "note": "Sunday hotel flow: no convention and no arena event (Don Omar postponed) - morning check-outs feed airport drop-offs, the Picklr finals add a daytime sports base at the Salt Palace, and the evening is theatre/cinema scale (Copeland 19:30, Kilby 18:00, cinema blocks); post-show flows est. ~21:30-23:00. Sun occupancy not measured (Sat measured panel: index 0.84, 0/19 sold out, median $129)"
   },
   {
    "id": "dt-arena",
@@ -142,32 +142,32 @@
    "miles": 1,
    "minutes": 5,
    "hourly": [
+    11,
+    10,
+    9,
+    9,
+    10,
     12,
-    11,
-    10,
-    10,
-    11,
-    13,
-    18,
-    26,
+    16,
+    24,
+    28,
     30,
-    32,
+    34,
+    36,
+    40,
+    38,
     36,
     38,
     42,
-    40,
-    38,
-    40,
     48,
-    62,
-    84,
-    92,
-    86,
-    60,
-    84,
-    94
+    54,
+    56,
+    50,
+    42,
+    36,
+    26
    ],
-   "note": "Delta Center tonight is a CONCERT, not a game: Don Omar - The Last King World Tour, 20:00 VERIFIED on Ticketmaster. Doors ~18:30 (venue pattern), arrivals 18:30-20:00; end est. 22:30-23:00, dispersal est. 22:30-23:30. TicketSmarter: 595 tickets listed, from $135.74, average $594.40 - NOT sold out, a high-price committed Sunday crowd. No Jazz game today (next: Mon Nov 2 AWAY at San Antonio) and no Mammoth game (away at Philadelphia)"
+   "note": "Delta Center is DARK tonight: Don Omar - The Last King World Tour (was 20:00) is POSTPONED - verified live on deltacenter.com ~07:01 MST ('SHOW POSTPONED', severe respiratory infection / complete vocal rest; tickets stay valid for a new date, none announced). NO arena arrivals or dispersal today; this loop's curve is the Gateway-area baseline only (cinema/dining across the street). No Jazz game today (next: Mon Nov 2 AWAY at San Antonio) and no Mammoth game (away at Philadelphia)"
   },
   {
    "id": "dt-opera",
@@ -263,7 +263,7 @@
     88,
     92
    ],
-   "note": "Capitol Hill <-> Downtown Sunday: out side carries the Tabernacle Choir morning (09:30, out est. 10:00-10:30) and the Michelada Festival on North Temple from 16:00 (out est. 22:00-24:00); back side rides the downtown evening stack (Don Omar in 18:30-20:00, outs est. 21:30-23:30). No FrontRunner today"
+   "note": "Capitol Hill <-> Downtown Sunday: out side carries the Tabernacle Choir morning (09:30, out est. 10:00-10:30) and the Michelada Festival on North Temple from 16:00 (out est. 22:00-24:00); back side rides the downtown evening (Copeland 19:30, Kilby 18:00, cinemas - Don Omar POSTPONED, no arena flow). No FrontRunner today"
   },
   {
    "id": "n-loop",
@@ -455,7 +455,7 @@
     88,
     92
    ],
-   "note": "Avenues <-> Downtown Sunday: back side rides the downtown windows (Don Omar ingress 18:30-20:00, outs est. 21:30-23:30); out side is residential/church baseline"
+   "note": "Avenues <-> Downtown Sunday: back side rides the downtown windows (afternoon Dia field, evening outs est. 21:30-23:30 - theatre/cinema scale, Don Omar postponed); out side is residential/church baseline"
   },
   {
    "id": "av-loop",
@@ -586,7 +586,7 @@
     88,
     92
    ],
-   "note": "Out = campus/east Sunday demand: hospital anchors and reduced Sunday baseline only - no campus, Pioneer, Kingsbury or Rice-Eccles event today. Back = downtown Sunday stack: Dia/Michelada afternoon field, Don Omar ingress 18:30-20:00 and the night outs est. 21:30-23:30"
+   "note": "Out = campus/east Sunday demand: hospital anchors and reduced Sunday baseline only - no campus, Pioneer, Kingsbury or Rice-Eccles event today. Back = downtown Sunday: Dia/Michelada afternoon field and the modest evening (Copeland 19:30, Kilby 18:00, cinemas; Don Omar POSTPONED, no arena stack), outs est. 21:30-23:30"
   },
   {
    "id": "e-hosp",
@@ -717,7 +717,7 @@
     88,
     92
    ],
-   "note": "Sugar House <-> Downtown Sunday: back side rides the downtown evening stack (Don Omar out est. 22:30-23:30); late outbound legs face Highland Dr nightly closures after 22:00"
+   "note": "Sugar House <-> Downtown Sunday: back side rides the downtown evening (Copeland/Kilby/cinema outs est. 21:30-23:30; no arena out - Don Omar postponed); late outbound legs face Highland Dr nightly closures after 22:00"
   },
   {
    "id": "se-mill",
@@ -874,7 +874,7 @@
     88,
     92
    ],
-   "note": "Murray <-> Downtown Sunday: back side rides the downtown stack; south side's own night generators are the haunts (Fear Factory FINAL night / Nightmare on 13th, from 19:00) on the downtown edge"
+   "note": "Murray <-> Downtown Sunday: back side rides the downtown evening stack (theatre/cinema scale tonight); south side's own night generators are the haunts (Fear Factory FINAL night / Nightmare on 13th, from 19:00) on the downtown edge"
   },
   {
    "id": "s-fashion",
@@ -1040,7 +1040,7 @@
     88,
     92
    ],
-   "note": "West Valley <-> Downtown Sunday: back side rides the downtown Don Omar stack (in 18:30-20:00, out est. 22:30-23:30); west side itself is quiet, California Ave reductions 21:00-04:00 apply"
+   "note": "West Valley <-> Downtown Sunday: back side rides the downtown evening (Copeland 19:30, Kilby 18:00, cinemas - Don Omar postponed, no arena flow); west side itself is quiet, California Ave reductions 21:00-04:00 apply"
   },
   {
    "id": "sw-maverik",
@@ -1223,7 +1223,7 @@
     88,
     92
    ],
-   "note": "Fairpark <-> Downtown Sunday: out side IS today's afternoon field - Centro Civico Dia de los Muertos 13:00-18:00 (free, staggered) and Fear Factory final night from 19:00; back side rides the downtown evening stack"
+   "note": "Fairpark <-> Downtown Sunday: out side IS today's afternoon field - Centro Civico Dia de los Muertos 13:00-18:00 (free, staggered) and Fear Factory final night from 19:00; back side rides the downtown evening (theatre/cinema scale)"
   },
   {
    "id": "w-loop",
@@ -1887,18 +1887,18 @@
     56,
     60,
     68,
+    70,
+    66,
     72,
-    84,
-    90,
-    88,
-    72,
-    88,
-    92
+    68,
+    62,
+    70,
+    72
    ],
    "reasons": [
-    "Sunday downtown is quiet until the afternoon, then ONE big evening stack: the day's downtown anchors are the Tabernacle Choir broadcast 09:30 at Temple Square (dispersal est. 10:00-10:30), Picklr Championship Sunday finals at the Salt Palace (coverage from 11:00 MT, session hours/attendance not published, dispersal est. late afternoon), Dia de los Muertos at Centro Civico Mexicano 13:00-18:00 (free, staggered) and the Michelada Festival from 16:00 on North Temple",
-    "Evening peak 18:00-23:30 is Don Omar at the Delta Center (20:00, arrivals 18:30-20:00, dispersal est. 22:30-23:30 - the day's largest event), with Stewart Copeland 19:30 at Rose Wagner (501 capacity) and Austin Giorgio 18:00 at Kilby Court in parallel, plus Fear Factory's final night 19:00-22:00/23:00 south of downtown. Dispersals stack est. 21:30-23:30 (Kilby/Rose Wagner 21:30-22:15, Fear Factory 22:00-23:00, Don Omar 22:30-23:30)",
-    "Rain all day (PoP 86-100%, thunderstorms 14:00-19:00) lifts car demand and slows every mile - favor short chained downtown trips. Sunday night bar demand is materially weaker than Saturday: no comparable bar-close wave is modelled. Eccles, Abravanel and Capitol are DARK today; no Jazz or Mammoth home game. Payday INACTIVE (fading residual only); DST ended overnight, sunset 17:23 MST pulls evening activity earlier"
+    "Sunday downtown is quiet until the afternoon: the day's downtown anchors are the Tabernacle Choir broadcast 09:30 at Temple Square (dispersal est. 10:00-10:30), Picklr Championship Sunday finals at the Salt Palace (coverage from 11:00 MT, session hours/attendance not published, dispersal est. late afternoon), Dia de los Muertos at Centro Civico Mexicano 13:00-18:00 (free, staggered) and the Michelada Festival from 16:00 on North Temple",
+    "CORRECTION (live, deltacenter.com ~07:01 MST): DON OMAR TONIGHT IS POSTPONED (severe respiratory infection, vocal rest; tickets valid for a new date not yet announced) - the Delta Center is DARK and there is NO arena stack tonight. The evening is theatre/club/cinema scale instead: Stewart Copeland 19:30 at Rose Wagner (501 capacity), Austin Giorgio 18:00 at Kilby Court, Fear Factory's final night 19:00-22:00/23:00, Michelada running to 22:00-24:00, and both downtown cinemas' verified evening blocks (Megaplex 13 evening starts, Broadway 10). Dispersals est. 21:30-23:30, all smaller than an arena out",
+    "Rain all day (PoP 86-100%, thunderstorms 14:00-19:00) lifts car demand and slows every mile - favor short chained downtown trips. Sunday night bar demand is materially weaker than Saturday: no comparable bar-close wave is modelled. Eccles, Abravanel, Capitol and the Delta Center are DARK today; no Jazz or Mammoth home game. Payday INACTIVE (fading residual only); DST ended overnight, sunset 17:23 MST pulls evening activity earlier"
    ],
    "sources": [
     "Events",
@@ -1985,7 +1985,7 @@
     19
    ],
    "reasons": [
-    "Avenues Sunday baseline: LDS Hospital shift anchors + residential/church pattern; evening side benefits only diffusely from the downtown Don Omar stack a few blocks south"
+    "Avenues Sunday baseline: LDS Hospital shift anchors + residential/church pattern; evening side benefits only diffusely from the downtown theatre/cinema evening a few blocks south (Don Omar POSTPONED - no arena flow)"
    ],
    "sources": [
     "Hospital Shifts",
@@ -2239,7 +2239,7 @@
    "reasons": [
     "Verified Sunday program is STRONGER than Saturday (a full return-travel Sunday): 311 passenger arrivals / ~40,807 est seats and 320 departures / ~42,424 est seats (05:00-23:59 gate window, seats estimated from aircraft type)",
     "Strongest curb pickup waves (recoger de, +30-45 min): ~10:30-11:15 (33 arr, ~4,497 est seats - most flights and most seats of the day), ~16:30-17:15 (29, ~4,043), ~20:30-21:15 (31, ~3,842), ~08:30-09:15 (30, ~3,625), ~19:30-20:15 (31, ~3,543), ~14:30-15:15 (30, ~3,511), ~12:30-13:15 (26, ~3,444) and a late ~22:30-23:15 wave (17, ~2,800). The delayed DAL301 (CDG, +83 min) moves ~282 est seats to a ~15:09-15:24 curb wave",
-    "KSLC board GREEN pre-dawn, 0 cancellations/diversions, average delay 0 sec; only 1 arrival delay 15+ min (DAL301) plus SWA3511 +20 min. TSA ~7 min average / <4 PreCheck, status Quiet per the feed snapshot. Rain at the field (4 SM visibility pre-dawn) and thunderstorms 14:00-19:00 are the delay risk. FIFO queue is data not available - go only when the loop closes"
+    "KSLC board GREEN pre-dawn, 0 cancellations/diversions, average delay 0 sec; only 1 arrival delay 15+ min (DAL301) plus SWA3511 +20 min. LIVE ~07:00 on slcairport.com: TSA wait displayed 27 min 30 sec (~28 min, superseding the feed snapshot's ~7 min average - allow the longer buffer this morning); live departures page 1 (of 30, 596 flights): 17 ON TIME, 2 DELAYED (DL4609 to Boise 07:45, DL2798 to Dallas Fort Worth 07:58), 1 BOARDING, 0 CANCELLED - page 1 only, the rest of the day was not verified. Rain at the field and thunderstorms 14:00-19:00 are the delay risk. FIFO queue is data not available - go only when the loop closes"
    ],
    "sources": [
     "Airport Flights",
@@ -2269,18 +2269,18 @@
     38,
     40,
     42,
-    46,
-    50,
-    48,
-    50,
-    52,
     44,
-    34
+    46,
+    44,
+    44,
+    46,
+    40,
+    30
    ],
    "reasons": [
-    "No convention in house: Salt Palace demand today is the Picklr Championship Sunday finals (daytime audience, dispersal est. late afternoon), so hotel flow is Sunday check-outs feeding morning airport drop-offs (llevar a), then a modest Don Omar arrival build in the evening - not a hotel-led day",
+    "No convention in house and NO arena event tonight (Don Omar POSTPONED - live): Salt Palace demand today is the Picklr Championship Sunday finals (daytime audience, dispersal est. late afternoon), so hotel flow is Sunday check-outs feeding morning airport drop-offs (llevar a) plus a modest theatre/cinema evening - not a hotel-led day",
     "Sun dated ADR: none verified. Listed-price panel (HotelsCombined US, 5 downtown properties): median $185, Grand America $293, Marriott Downtown $179, Hotel Monaco $188 - listed prices, NOT measured ADR; the median's rise vs Saturday is a panel-composition/edition change, NOT a verified same-basket price rise",
-    "Most recent MEASURED occupancy panel is Sat Oct 31 night (Halloween): median rate $129, median index 0.84 (below baseline), 0/19 sold out - LOW. Sun occupancy not measured. Compression today is LOW (estimated) most of the day, MODERATE (estimated) only in the Don Omar window"
+    "Most recent MEASURED occupancy panel is Sat Oct 31 night (Halloween): median rate $129, median index 0.84 (below baseline), 0/19 sold out - LOW. Sun occupancy not measured. Compression today is LOW (estimated) all day - the Don Omar window that would have raised the evening is postponed away"
    ],
    "sources": [
     "Conventions",
@@ -2320,7 +2320,7 @@
    ],
    "reasons": [
     "Sunday lunch rides the Dia de los Muertos afternoon (13:00-18:00, west downtown) and normal Sunday brunch/church-adjacent flow; Murray/Sugar House keep a reduced Sunday retail-dining baseline (many Sunday closures)",
-    "Evening: pre-show dinner 17:00-19:30 ahead of Don Omar (20:00) / Copeland (19:30) / Kilby (18:00); post-show layer ~21:30-23:00. Payday is INACTIVE today - only a fading post-payday residual, no payday premium modelled",
+    "Evening: pre-show dinner 17:00-19:30 ahead of Stewart Copeland (19:30), Austin Giorgio (18:00) and the cinemas' evening blocks (Don Omar is POSTPONED - no arena dinner rush); post-show layer ~21:30-23:00. Payday is INACTIVE today - only a fading post-payday residual, no payday premium modelled",
     "Rain all day (high 51F, PoP 86-100%, thunderstorms 14:00-19:00) shifts walk-up dining to cars but slows trips - no dry-evening boost today"
    ],
    "sources": [
@@ -2387,19 +2387,19 @@
     58,
     56,
     60,
+    66,
+    70,
     68,
+    74,
+    70,
+    64,
     72,
-    84,
-    90,
-    88,
-    72,
-    88,
-    92
+    74
    ],
    "reasons": [
-    "Sunday overlap structure: LOW in the morning (Tabernacle Choir 09:30 only), MODERATE 16:00-20:00 (Dia de los Muertos 13:00-18:00 + Michelada arrivals from 16:00 + Picklr finals dispersal est. late afternoon, all within ~1 mi west/northwest of downtown), HIGH only at the est. 22:30-23:30 Don Omar dispersal stacking with the Fear Factory final-night close and Michelada outflow",
-    "Evening lineup (all verified starts): Austin Giorgio 18:00 Kilby Court, Stewart Copeland 19:30 Rose Wagner, Don Omar 20:00 Delta Center, Fear Factory final night from 19:00, Michelada 16:00-22:00 (second listing to 24:00)",
-    "DARK / not counted today: Delta Center has NO Jazz/Mammoth game (Mammoth away at Philadelphia 14:00 MT - sports-bar viewing only), Rice-Eccles, America First Field (Royals away), Eccles, Abravanel, Capitol, Kingsbury, Maverik Center, The State Room (the Go Do Analog listing was NOT corroborated - not counted), Pioneer (no Sunday performance verified), The Union (Knocked Loose is Mon Nov 2, NOT today)"
+    "Sunday overlap structure: LOW in the morning (Tabernacle Choir 09:30 only), MODERATE in the afternoon west-downtown field (Dia de los Muertos 13:00-18:00 + Michelada arrivals from 16:00 + Picklr finals dispersal est. late afternoon, all within ~1 mi west/northwest of downtown), and a MODERATE theatre/club/cinema evening - NOT an arena night",
+    "Evening lineup (all verified starts): Austin Giorgio 18:00 Kilby Court, Stewart Copeland 19:30 Rose Wagner, Fear Factory final night from 19:00, Michelada 16:00-22:00 (second listing to 24:00), Megaplex Gateway 35 starts (13 in the evening), Broadway Centre 27 sessions (10 in the evening). Dispersals est. 21:30-23:30",
+    "DARK / not counted today: DON OMAR at the Delta Center is POSTPONED (live deltacenter.com - respiratory infection/vocal rest; NOT a tonight event), Jazz/Mammoth (both away), Rice-Eccles, America First Field (Royals away), Eccles, Abravanel, Capitol, Kingsbury, Maverik Center, The State Room (the Go Do Analog listing was NOT corroborated - not counted), Pioneer (no Sunday performance verified), The Union (Knocked Loose is Mon Nov 2, NOT today)"
    ],
    "sources": [
     "Events",
@@ -3060,33 +3060,32 @@
    "name": "Delta Center",
    "type": "Arena",
    "hourly": [
+    11,
+    10,
+    9,
+    9,
+    10,
     12,
-    11,
-    10,
-    10,
-    11,
-    13,
-    18,
-    26,
+    16,
+    24,
+    28,
     30,
-    32,
+    34,
+    36,
+    40,
+    38,
     36,
     38,
     42,
-    40,
-    38,
-    40,
     48,
-    62,
-    84,
-    92,
-    86,
-    60,
-    84,
-    94
+    54,
+    56,
+    50,
+    42,
+    36,
+    26
    ],
-   "note": "Don Omar - The Last King World Tour, Delta Center, 20:00 VERIFIED on Ticketmaster (venue + artist pages). Doors ~18:30 per venue pattern; arrivals 18:30-20:00; end est. 22:30-23:00, dispersal est. 22:30-23:30. TicketSmarter: 595 tickets listed, from $135.74, average $594.40 - NOT sold out. Today's largest event. NO Jazz/Mammoth game here today",
-   "event": "Don Omar"
+   "note": "DARK tonight - CORRECTION (live deltacenter.com ~07:01 MST): Don Omar - The Last King World Tour, scheduled today 20:00, is POSTPONED ('SHOW POSTPONED' - severe respiratory infection, medical advice requiring complete vocal rest); tickets remain valid for the new date, which has NOT been announced. Ticketmaster/the morning feeds still listed it as on - the live venue page prevails, so NO concert demand is modelled here tonight. No Jazz/Mammoth game here today either"
   },
   {
    "area": [
@@ -3190,7 +3189,7 @@
     26,
     18
    ],
-   "note": "City Creek Sunday flow: reduced Sunday retail (many stores closed Sunday) + Temple Square morning (Tabernacle Choir 09:30) and the Don Omar evening on its doorstep"
+   "note": "City Creek Sunday flow: reduced Sunday retail (many stores closed Sunday) + Temple Square morning (Tabernacle Choir 09:30) and the Rose Wagner / cinema evening on its doorstep (no arena event tonight - Don Omar postponed)"
   },
   {
    "area": [
@@ -3224,7 +3223,7 @@
     36,
     24
    ],
-   "note": "Gateway Sunday: cinema + dining flow + Don Omar spillover (Delta Center is across the street, arrivals 18:30-20:00, dispersal est. 22:30-23:30); Megaplex showtimes verified today via CinemaClock: 35 starts across 6 films, 14 evening starts 18:00-22:15, latest 22:15 (see the cinema venue note)"
+   "note": "Gateway Sunday: cinema + dining flow (Megaplex verified live: doors 10:30-22:30, 35 starts, evening block to a 22:15 latest start) - tonight there is NO Delta Center flow across the street (Don Omar POSTPONED, arena dark), so the Gateway evening is cinema-led"
   },
   {
    "area": [
@@ -3259,7 +3258,7 @@
     66,
     56
    ],
-   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Don Omar / Copeland / Kilby dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail, NOT a Sunday-scale bar-close wave"
+   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Copeland / Kilby / cinema dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail (no arena out tonight - Don Omar postponed), NOT a Saturday-scale bar-close wave"
   },
   {
    "area": [
@@ -3294,7 +3293,7 @@
     66,
     56
    ],
-   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Don Omar / Copeland / Kilby dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail, NOT a Sunday-scale bar-close wave"
+   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Copeland / Kilby / cinema dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail (no arena out tonight - Don Omar postponed), NOT a Saturday-scale bar-close wave"
   },
   {
    "area": [
@@ -3329,7 +3328,7 @@
     56,
     40
    ],
-   "note": "Main St dining Sunday: brunch/lunch baseline, pre-show dinner 17:00-19:30 ahead of Don Omar/Copeland, post-show layer ~21:30-23:00; no payday premium today (INACTIVE, fading residual only)"
+   "note": "Main St dining Sunday: brunch/lunch baseline, pre-show dinner 17:00-19:30 ahead of Copeland/Kilby and the cinema evening blocks, post-show layer ~21:30-23:00; no payday premium today (INACTIVE, fading residual only). No arena dinner rush tonight - Don Omar is postponed"
   },
   {
    "area": [
@@ -3364,7 +3363,7 @@
     44,
     38
    ],
-   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and Don Omar arrivals from late afternoon. Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
+   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and a modest theatre/cinema evening (Don Omar POSTPONED - no arena arrivals). Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
   },
   {
    "area": [
@@ -3399,7 +3398,7 @@
     44,
     38
    ],
-   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and Don Omar arrivals from late afternoon. Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
+   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and a modest theatre/cinema evening (Don Omar POSTPONED - no arena arrivals). Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
   },
   {
    "area": [
@@ -3434,7 +3433,7 @@
     44,
     38
    ],
-   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and Don Omar arrivals from late afternoon. Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
+   "note": "Downtown hotel Sunday: no convention in house (Salt Palace = Picklr Championship Sunday) - check-outs in the morning and a modest theatre/cinema evening (Don Omar POSTPONED - no arena arrivals). Listed panel median $185 (HotelsCombined, not ADR; composition change, not a verified rise); Sat measured occupancy index 0.84, 0/19 sold out; Sun occupancy not measured. Hyatt had no dated tonight quote verified - data not available"
   },
   {
    "area": [
@@ -3469,7 +3468,7 @@
     40,
     33
    ],
-   "note": "Downtown hotels Sunday: no convention - check-outs in the morning, Picklr finals base, Don Omar arrivals in the evening. Grand America listed $293 and Little America $131 in the ADR folder's additional listings (HotelsCombined panel) - listed prices, not ADR. Sat measured occupancy was LOW (index 0.84, 0/19 sold out); Sun not measured"
+   "note": "Downtown hotels Sunday: no convention - check-outs in the morning, Picklr finals base, theatre/cinema evening (Don Omar postponed). Grand America listed $293 and Little America $131 in the ADR folder's additional listings (HotelsCombined panel) - listed prices, not ADR. Sat measured occupancy was LOW (index 0.84, 0/19 sold out); Sun not measured"
   },
   {
    "area": [
@@ -3537,7 +3536,7 @@
     30,
     22
    ],
-   "note": "Courthouse TRAX Sunday: dispersal node for Rose Wagner (est. 21:30-22:15) and Don Omar (est. 22:30-23:30) - Sunday TRAX service, reduced frequency"
+   "note": "Courthouse TRAX Sunday: dispersal node for Rose Wagner (est. 21:30-22:15) and the Broadway Centre Cinemas evening sessions (latest start 21:15, outs rolling after) - Sunday TRAX service, reduced frequency. No arena dispersal tonight (Don Omar postponed)"
   },
   {
    "area": [
@@ -3571,7 +3570,7 @@
     64,
     34
    ],
-   "note": "Verified Sunday program: curb waves ~10:30-11:15 (biggest, ~4,497 est seats), ~16:30-17:15 (~4,043), ~20:30-21:15 (~3,842), ~08:30-09:15 (~3,625), ~19:30-20:15 (~3,543), ~14:30-15:15 (~3,511), ~12:30-13:15 (~3,444), late ~22:30-23:15 (~2,800); delayed DAL301 wave ~15:09-15:24. Board GREEN, 0 cancellations. TSA ~7 min avg, Quiet. FIFO queue data not available"
+   "note": "Verified Sunday program: curb waves ~10:30-11:15 (biggest, ~4,497 est seats), ~16:30-17:15 (~4,043), ~20:30-21:15 (~3,842), ~08:30-09:15 (~3,625), ~19:30-20:15 (~3,543), ~14:30-15:15 (~3,511), ~12:30-13:15 (~3,444), late ~22:30-23:15 (~2,800); delayed DAL301 wave ~15:09-15:24. Board GREEN, 0 cancellations. LIVE ~07:00: TSA displayed 27 min 30 sec (~28 min - allow the longer buffer); departures page 1: 17 on time, 2 delayed (DL4609 Boise, DL2798 DFW), 1 boarding, 0 cancelled. FIFO queue data not available"
   },
   {
    "area": [
@@ -4123,7 +4122,7 @@
     66,
     56
    ],
-   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Don Omar / Copeland / Kilby dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail, NOT a Sunday-scale bar-close wave"
+   "note": "Estimated by Sunday pattern + nearby verified events (no live source for the bars themselves): a Sunday night after Halloween - materially weaker than Saturday, payday INACTIVE, no verified bar crawl today; demand rides the Copeland / Kilby / cinema dispersals est. 21:30-23:30 rolling into a modest Sunday bar tail (no arena out tonight - Don Omar postponed), NOT a Saturday-scale bar-close wave"
   },
   {
    "area": [
@@ -4157,7 +4156,7 @@
     56,
     38
    ],
-   "note": "Showtimes VERIFIED for today Sun Nov 1 via CinemaClock (fetched this morning): 6 films, 35 starts - blocks at 11:20/14:00/16:50/19:30/22:15, 12:00/15:05/18:10/21:15, 11:00/13:45/16:30/19:15/22:00, 13:00/15:45/18:20/21:00, 11:15/12:15/14:25/15:25/17:35/18:35/20:45/21:45 and 11:00/12:15/13:25/14:45/16:00/17:10/18:35/19:45/21:00. Evening starts (18:00-22:15) = 14, latest start 22:15 - a full Sunday evening cinema block stacking with the Don Omar ingress/dispersal across the street. Film titles were not captured in the fetch and sold-out status was not shown - neither is claimed. Curve follows the verified start blocks (arrivals before each block, outs ~2h after)"
+   "note": "Showtimes VERIFIED LIVE for today Sun Nov 1 (megaplex.com, 07:04-07:07 MST; doors 10:30 AM-10:30 PM): 6 films, 35 starts - Clayface 11:20/14:00/16:50/19:30/22:15, Wicker 13:00/15:45/18:20/21:00, Wildwood 11:15/12:15/14:25/15:25/17:35/18:35/20:45/21:45, Sense and Sensibility 12:00/15:05/18:10/21:15, Street Fighter 11:00/13:45/16:30/19:15/22:00, You Can See Everything 11:00/12:15/13:25/14:45/16:00/17:10/18:35/19:45/21:00. Evening starts 18:00-22:00 = 13 (live count), latest start 22:15; NO sold-out notices observed. The same start blocks were independently confirmed via CinemaClock the same morning. Curve follows the verified blocks (arrivals before each block, outs ~2h after) - a full Sunday evening cinema block, tonight WITHOUT any arena flow across the street (Don Omar postponed)"
   },
   {
    "area": [
@@ -4174,24 +4173,24 @@
     7,
     9,
     11,
-    14,
-    18,
-    24,
-    32,
-    40,
+    15,
+    20,
+    26,
+    36,
     44,
-    42,
-    40,
-    42,
     48,
-    56,
+    46,
+    44,
+    46,
+    52,
     58,
+    66,
+    62,
+    68,
     54,
-    48,
-    40,
-    28
+    34
    ],
-   "note": "NOT VERIFIED for today: no Broadway Centre Cinemas showtimes for Sun Nov 1 were reachable in this run (search and text fetch returned no showtimes data; SLFS listings are dynamic and the live browser task did not return) - today's films, showtime counts, evening starts, latest start and sold-outs are all data not available. A places listing gives Sunday hours 12:30-22:00 (listing hours only). This curve is the Sunday baseline pattern, declared estimated"
+   "note": "Showtimes VERIFIED LIVE for today Sun Nov 1 (slfstix.org Broadway now-playing, '01 Sun' selected, 07:03-07:05 MST): 8 films, 27 sessions - Gentle Monster 12:00/19:00, The Only Living Pickpocket in New York 12:15/14:15/16:15/19:10/21:10, Fjord 12:00/14:45/17:30/20:15, Wicker 12:05/14:15/16:25/19:05/21:10, You Can See Everything 12:00/16:00/19:15, The Devils (1971) 4K Restoration 14:00/21:15, Hell's Highway 12:00/14:00/16:00/19:00/21:00, Wild at Heart (1990) 16:00. Evening starts 18:00-22:00 = 10, latest start 21:15; NO 'SOLD OUT' observed. Die Hard (1988) and the Rocky Horror Picture Show variants list NO showtimes today (not counted). Curve follows the verified sessions (arrivals before each start, outs ~2h after)"
   },
   {
    "area": [
@@ -4841,7 +4840,7 @@
     76,
     54
    ],
-   "note": "Stewart Copeland - Have I Said Too Much (spoken word), Jeanne Wagner Theatre at Rose Wagner, 19:30 VERIFIED (Salt Lake County Arts venue page lists Nov 1, 2026; TickPick cheapest $70, average $90). Venue capacity 501 published - a small, committed theatre crowd. End est. 21:30-22:00, dispersal est. 21:30-22:15, overlapping Don Omar's show hours downtown",
+   "note": "Stewart Copeland - Have I Said Too Much (spoken word), Jeanne Wagner Theatre at Rose Wagner, 19:30 VERIFIED (Salt Lake County Arts venue page lists Nov 1, 2026; TickPick cheapest $70, average $90). Venue capacity 501 published - a small, committed theatre crowd. End est. 21:30-22:00, dispersal est. 21:30-22:15, overlapping the Kilby and cinema evening windows downtown (no arena show tonight - Don Omar postponed)",
    "event": "Stewart Copeland"
   },
   {
@@ -5223,7 +5222,7 @@
     88,
     92
    ],
-   "note": "University -> Downtown Sunday: baseline flow chains into the downtown evening stack (Don Omar in 18:30-20:00, outs est. 21:30-23:30)",
+   "note": "University -> Downtown Sunday: baseline flow chains into the downtown evening (Copeland 19:30, Kilby 18:00, cinemas; Don Omar POSTPONED - no arena out)",
    "reverse": "dt-campus"
   },
   {
@@ -5290,10 +5289,10 @@
     36,
     31,
     26,
-    58,
-    66
+    21,
+    16
    ],
-   "note": "Maverik Center -> Downtown Sunday: baseline only (venue dark); the downtown Don Omar dispersal est. 22:30-23:30 is tonight's late flow",
+   "note": "Maverik Center -> Downtown Sunday: baseline only (venue dark); tonight's late downtown flow is the theatre/cinema dispersal est. 21:30-23:30 (Don Omar postponed)",
    "reverse": "dt-maverik"
   },
   {
@@ -5363,7 +5362,7 @@
     26,
     19
    ],
-   "note": "Murray -> Downtown Sunday baseline; evening side feeds the Don Omar stack windows",
+   "note": "Murray -> Downtown Sunday baseline; evening side feeds the downtown theatre/cinema windows (Don Omar postponed - no arena stack)",
    "reverse": "dt-murray"
   },
   {
@@ -5467,7 +5466,7 @@
     58,
     44
    ],
-   "note": "Sunday: Tabernacle Choir Music & the Spoken Word 09:30 (dispersal est. 10:00-10:30) + Sunday Temple Square flow; evening rides the Don Omar stack on its doorstep"
+   "note": "Sunday: Tabernacle Choir Music & the Spoken Word 09:30 (dispersal est. 10:00-10:30) + Sunday Temple Square flow; evening rides the Rose Wagner / cinema stack on its doorstep (no arena event - Don Omar postponed)"
   },
   {
    "id": "gateway",
@@ -5491,14 +5490,14 @@
     54,
     56,
     62,
-    72,
-    74,
     70,
+    72,
     66,
-    60,
-    42
+    62,
+    54,
+    38
    ],
-   "note": "Gateway Sunday: cinema + dining + Don Omar spillover (Delta Center across the street); Megaplex: 35 verified starts today, evening block 18:10-22:15"
+   "note": "Gateway Sunday: cinema + dining, cinema-led tonight (Megaplex: 35 verified starts, evening block 18:10-22:15; Delta Center across the street is DARK - Don Omar postponed)"
   },
   {
    "id": "central-9th",
@@ -5690,18 +5689,18 @@
  "alerts": [
   {
    "type": "Weather",
-   "title": "Rain all day Sunday, high 51F, thunderstorms 14:00-19:00 - wet-road adjustment applies every hour",
-   "detail": "NWS SLC: rain before 14:00, then showers and thunderstorms; cloudy, high near 51F falling to ~48F in the afternoon, 0.75-1.00 in of rain possible. Hourly PoP: 100% 05:00-07:00, 86% 08:00-10:00, 94% 11:00-13:00, 97% 14:00-19:00, 93% 20:00-22:00, 96% 23:00 - ABOVE the 40% wet-road threshold at EVERY hour: apply the wet-road traffic adjustment (+5-10 saturation points) all day, with extra caution in the 14:00-19:00 thunderstorm block and the windy evening (WNW 13 mph from 20:00). DST ended overnight (02:00 MDT -> 01:00 MST); sunset 17:23 MST. No snow at valley level; mountain snow under a Winter Weather Advisory until Mon 11:00 LIVE CONFIRMATION 07:16 MST (NWS hourly API read): identical values - 100% at 07:00, 86% 08:00-10:00, 94% 11:00-13:00, 97% with Showers And Thunderstorms 14:00-19:00, 93% 20:00-22:00, 96% at 23:00; temps 47-51F falling to 45F"
+   "title": "Rain all day Sunday, high near 51-52F, thunderstorms 14:00-19:00 - wet-road adjustment applies every hour",
+   "detail": "NWS SLC: rain before 14:00, then showers and thunderstorms; cloudy, high near 51F (feed) / near 52F (live weather.gov read ~06:59 MST), 0.75-1.00 in of rain possible (live: 0.50-0.75 in new rain today). Hourly PoP (API read 07:16 MST, identical to the feed): 100% at 07:00, 86% 08:00-10:00, 94% 11:00-13:00, 97% 14:00-19:00, 93% 20:00-22:00, 96% at 23:00 (live digital table: 95-97% through the evening) - ABOVE the 40% wet-road threshold at EVERY hour: apply the wet-road traffic adjustment (+5-10 saturation points) all day, with extra caution in the 14:00-19:00 thunderstorm block and the windy evening (WNW 13 mph from 20:00). Live KSLC conditions 06:35 MST: rain, 50F, visibility 8 mi. DST ended overnight (02:00 MDT -> 01:00 MST); sunset 17:23 MST. No snow at valley level; mountain snow under a Winter Weather Advisory until Mon 11:00"
   },
   {
    "type": "Road",
-   "title": "No valley freeway closure today; Guardsman Pass closed for the season, Alpine Loop's last day",
-   "detail": "Downtown core / airport loop (I-80 / North Temple): no full closure verified. Standing friction: Redwood Rd -> NB I-215 closed through Jul 2027, California Ave nightly reductions 21:00-04:00 (one lane each direction, carried - keep airport runs on I-80/North Temple), 500 S Jordan River Bridge closed to spring 2027, Simpson Ave closed + Highland Dr nightly. Guardsman Pass (SR-190) CLOSED for the season; Alpine Loop (SR-92) still open TODAY, closes Mon Nov 2 07:00. Out of core: Riverdale SB I-15 -> EB I-84 ramp closed all weekend to Mon 06:00; Lehi new traffic pattern + overnight lanes from 19:00 (direction not available). Wet roads all day"
+   "title": "Live UDOT: no valley freeway closure today; six morning crash incidents on wet roads; Guardsman Pass closed for the season",
+   "detail": "LIVE UDOT ~06:59-07:00 MST: alerts list only SR-162 (Bluff, outside the valley) closed both ways for flooding; NO full closure of I-15/I-80/I-215 in the valley. Six SLC-area crash incidents this morning, none a standing closure: I-15 SB MP 291 (11600 S, Draper, left shoulder, 06:25), I-15 NB Exit 300 (5300 S, Murray, 06:54), I-215 W NB at 700 N (left lane + shoulder, 06:05), I-215 NB MP 19 (2400 S, West Valley, 06:33), I-215 W SB at SR-201 (no lanes blocked, 05:33), I-15 SB MP 273 (Lindon, 06:48). Standing friction: Redwood Rd -> NB I-215 closed until Jun 1, 2027 per the live read (supersedes the feed's Jul 2027), California Ave nightly reductions 21:00-04:00 (one lane each direction, carried - keep airport runs on I-80/North Temple), 500 S Jordan River Bridge closed to spring 2027, Simpson Ave closed + Highland Dr nightly, State Street (N Temple-300 N) closure carried from yesterday's live read (not re-verified today, declared). Guardsman Pass (SR-190) CLOSED for the season; Alpine Loop (SR-92) still open TODAY, closes Mon Nov 2 07:00. Out of core: Riverdale SB I-15 -> EB I-84 ramp closed all weekend to Mon 06:00; Lehi new traffic pattern + overnight lanes from 19:00 (direction not available). The UDOT Road Restrictions table itself was not verified live (iframe empty). Wet roads all day"
   },
   {
    "type": "Airport",
-   "title": "KSLC green board, 0 cancellations; delayed Paris flight stacks a curb wave ~15:09-15:24",
-   "detail": "Verified Sunday program - 311 arrivals / ~40,807 est seats, 320 departures / ~42,424 est seats (stronger than Saturday); FlightAware delay board green, 0 sec average, 0 cancellations/diversions flagged. Arrival delay: DAL301 CDG +83 min (gate 13:16 -> 14:39 MST, ~282 est seats, curb ~15:09-15:24) plus SWA3511 PHX +20 min (curb ~15:15-15:30). Departure delays: FFT3862 DEN +65 min, DAL1447 PHX +35 min, SWA3971 HOU +20 min. TSA ~7 min average, Quiet, per feed snapshot. Thunderstorms 14:00-19:00 are the delay risk - recheck before the evening banks. FIFO queue: data not available (Live airport-board re-check this morning did not return - this is the 04:30 MST FlightAware snapshot, declared.)"
+   "title": "KSLC green board, 0 cancellations on the live first page; TSA live 27 min 30 sec; delayed Paris flight stacks a curb wave ~15:09-15:24",
+   "detail": "Verified Sunday program - 311 arrivals / ~40,807 est seats, 320 departures / ~42,424 est seats (stronger than Saturday); FlightAware delay board green, 0 sec average, 0 cancellations/diversions flagged in the program. Arrival delay: DAL301 CDG +83 min (gate 13:16 -> 14:39 MST, ~282 est seats, curb ~15:09-15:24) plus SWA3511 PHX +20 min (curb ~15:15-15:30). Departure delays at snapshot: FFT3862 DEN +65 min, DAL1447 PHX +35 min, SWA3971 HOU +20 min. LIVE ~07:00 on slcairport.com: TSA wait displayed 27 min 30 sec (~28 min); departures page 1 of 30 (596 flights): 17 ON TIME, 2 DELAYED (DL4609 to Boise 07:45, DL2798 to Dallas Fort Worth 07:58 - new single-flight delays), 1 BOARDING, 0 CANCELLED - page 1 only, cancellations beyond it were not verified. Thunderstorms 14:00-19:00 are the delay risk - recheck before the evening banks. FIFO queue: data not available"
   },
   {
    "type": "Transit",
@@ -5710,8 +5709,8 @@
   },
   {
    "type": "Events",
-   "title": "Quiet Sunday until the evening, then Don Omar: compression LOW, MODERATE only 18:30-23:30 downtown",
-   "detail": "Morning: Tabernacle Choir 09:30 Temple Square only. Afternoon west-downtown field: Dia de los Muertos 13:00-18:00 Centro Civico (free), Picklr Championship Sunday finals at the Salt Palace (dispersal est. late afternoon), Michelada Festival 16:00-22:00 at 801 Event Center. Evening stack: Austin Giorgio 18:00 Kilby, Stewart Copeland 19:30 Rose Wagner (501 cap, from $70), DON OMAR 20:00 Delta Center (from $135.74, avg $594.40, not sold out; dispersal est. 22:30-23:30), Fear Factory FINAL night from 19:00. Dispersals est. 21:30-23:30. DARK: Jazz/Mammoth (both away), Rice-Eccles, Eccles, Abravanel, Capitol, Maverik Center, Pioneer (no Sunday show verified). Payday INACTIVE"
+   "title": "CORRECTION: Don Omar tonight is POSTPONED - quiet Sunday, theatre/cinema evening only; compression LOW all day",
+   "detail": "LIVE deltacenter.com ~07:01 MST: 'POSTPONED: DON OMAR' - the 20:00 Delta Center show is postponed (severe respiratory infection, complete vocal rest; tickets valid for a new date, none announced). The morning feeds/Ticketmaster still listed it as on; the live venue page prevails and NO arena demand is modelled tonight. What remains: morning Tabernacle Choir 09:30 Temple Square; afternoon west-downtown field - Dia de los Muertos 13:00-18:00 Centro Civico (free), Picklr Championship Sunday finals at the Salt Palace (dispersal est. late afternoon), Michelada Festival 16:00-22:00 at 801 Event Center; evening - Austin Giorgio 18:00 Kilby, Stewart Copeland 19:30 Rose Wagner (501 cap, from $70), Fear Factory FINAL night from 19:00, Megaplex Gateway 35 verified starts (evening block to 22:15) and Broadway Centre 27 verified sessions (latest start 21:15). Dispersals est. 21:30-23:30, all small-room scale. DARK: Delta Center (postponed), Jazz/Mammoth (both away), Rice-Eccles, Eccles, Abravanel, Capitol, Maverik Center, Pioneer (no Sunday show verified). Payday INACTIVE"
   }
  ]
 }
